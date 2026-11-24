@@ -139,17 +139,6 @@
             <span class="text-[10px] bg-brand-100 text-brand-700 px-1.5 py-0.2 rounded font-medium">Dual-Mode</span>
           </button>
 
-          <!-- Modul Draft Mode ACC -->
-          <button @click="switchTab('draft_acc')" :class="currentTab === 'draft_acc' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 font-medium'" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition">
-            <div class="flex items-center space-x-3">
-              <i data-lucide="clipboard-check" class="w-5 h-5 text-indigo-600"></i>
-              <span>Draft Mode ACC</span>
-            </div>
-            <template x-if="pendingDraftAccCount > 0">
-              <span class="px-2 py-0.5 text-xs rounded-full font-bold bg-amber-500/10 text-amber-600" x-text="pendingDraftAccCount"></span>
-            </template>
-          </button>
-
           <!-- Menu Inbox Komentar Mobile -->
           <button @click="switchTab('inbox_comments')" :class="currentTab === 'inbox_comments' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 font-medium'" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition">
             <div class="flex items-center space-x-3">
@@ -166,14 +155,6 @@
         <div class="pt-3 pb-1 border-t border-slate-100">
           <span class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Katalog & Ide Konten</span>
         </div>
-
-        <button @click="switchTab('daily_queue')" :class="currentTab === 'daily_queue' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 font-medium'" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition">
-          <div class="flex items-center space-x-3">
-            <i data-lucide="calendar-clock" class="w-5 h-5 text-amber-500"></i>
-            <span>Antrean Hari Ini</span>
-          </div>
-          <span class="px-2 py-0.5 text-xs rounded-full font-bold bg-amber-500/10 text-amber-600" x-text="unpostedProductsCount"></span>
-        </button>
 
         <button @click="switchTab('products')" :class="currentTab === 'products' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 font-medium'" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition">
           <div class="flex items-center space-x-3">
@@ -258,17 +239,6 @@
               <span class="text-[10px] bg-brand-100 text-brand-700 px-1.5 py-0.2 rounded font-medium">Dual-Mode</span>
             </button>
 
-            <!-- Modul Draft Mode ACC (Desktop) -->
-            <button @click="switchTab('draft_acc')" :class="currentTab === 'draft_acc' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 font-medium'" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition">
-              <div class="flex items-center space-x-3">
-                <i data-lucide="clipboard-check" class="w-5 h-5 text-indigo-600"></i>
-                <span>Draft Mode ACC</span>
-              </div>
-              <template x-if="pendingDraftAccCount > 0">
-                <span class="px-2 py-0.5 text-xs rounded-full font-bold bg-amber-500/10 text-amber-600" x-text="pendingDraftAccCount"></span>
-              </template>
-            </button>
-
             <!-- Menu Inbox Komentar Desktop -->
             <button @click="switchTab('inbox_comments')" :class="currentTab === 'inbox_comments' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 font-medium'" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition">
               <div class="flex items-center space-x-3">
@@ -285,14 +255,6 @@
           <div class="pt-3 pb-1 border-t border-slate-100">
             <span class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Katalog & Ide Konten</span>
           </div>
-
-          <button @click="switchTab('daily_queue')" :class="currentTab === 'daily_queue' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 font-medium'" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition">
-            <div class="flex items-center space-x-3">
-              <i data-lucide="calendar-clock" class="w-5 h-5 text-amber-500"></i>
-              <span>Antrean Hari Ini</span>
-            </div>
-            <span class="px-2 py-0.5 text-xs rounded-full font-bold bg-amber-500/10 text-amber-600" x-text="unpostedProductsCount"></span>
-          </button>
 
           <button @click="switchTab('products')" :class="currentTab === 'products' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 font-medium'" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition">
             <div class="flex items-center space-x-3">
@@ -334,7 +296,7 @@
       </div>
 
       <div class="p-4 border-t border-slate-100 text-center">
-        <p class="text-[11px] text-slate-400 font-medium">ThreadChain Engine v2.4</p>
+        <p class="text-[11px] text-slate-400 font-medium">ThreadChain Engine v2.5</p>
       </div>
     </aside>
 
@@ -1224,193 +1186,6 @@
             </div>
           </div>
 
-          <!-- TAB KHUSUS: ANTREAN PRODUK BELUM DIPOSTING HARI INI -->
-          <div x-show="currentTab === 'daily_queue'" class="space-y-5">
-            <!-- Toolbar Filter Persisten (Kategori Niche, Akun Pengelola dengan Avatar, Pencarian, & Status Rotasi 3-Mode) -->
-            <div class="bg-surface p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-              <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
-                <div class="flex flex-1 flex-wrap items-center gap-2.5">
-                  <!-- Search Bar -->
-                  <div class="relative flex-1 min-w-[200px]">
-                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                    <input type="text" x-model="dailyQueueSearch" placeholder="Cari nama produk..." class="w-full text-xs pl-9 pr-3 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20">
-                  </div>
-
-                  <!-- Filter Niche Kategori -->
-                  <select x-model="dailyQueueCategoryFilter" class="text-xs py-2 px-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none font-medium">
-                    <option value="">Semua Kategori</option>
-                    <template x-for="cat in uniqueProductCategories" :key="'dq-cat-' + cat">
-                      <option :value="cat" x-text="cat"></option>
-                    </template>
-                  </select>
-
-                  <!-- Filter Berdasarkan Akun Pengelola (Dengan Avatar & Niche) -->
-                  <div class="relative" @click.outside="dailyQueueAccountDropdownOpen = false">
-                    <button type="button" @click="dailyQueueAccountDropdownOpen = !dailyQueueAccountDropdownOpen" class="text-xs py-2 px-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white flex items-center space-x-2 transition">
-                      <template x-if="!dailyQueueAccountFilter">
-                        <div class="flex items-center space-x-1.5 text-slate-600">
-                          <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
-                          <span>Semua Akun Pengelola</span>
-                        </div>
-                      </template>
-                      <template x-if="dailyQueueAccountFilter && getAccount(dailyQueueAccountFilter).account_id">
-                        <div class="flex items-center space-x-2">
-                          <img :src="getAccount(dailyQueueAccountFilter).profile_picture_url || 'https://via.placeholder.com/24'" class="w-4 h-4 rounded-full border border-slate-200 shrink-0 object-cover">
-                          <span class="font-bold text-slate-800" x-text="'@' + getAccount(dailyQueueAccountFilter).username"></span>
-                          <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-50 text-indigo-700 font-semibold" x-text="getAccount(dailyQueueAccountFilter).category || 'General'"></span>
-                        </div>
-                      </template>
-                      <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i>
-                    </button>
-
-                    <!-- Dropdown List Akun Pengelola -->
-                    <div x-show="dailyQueueAccountDropdownOpen" x-cloak class="absolute left-0 top-full mt-1.5 w-64 bg-white rounded-2xl shadow-xl border border-slate-200 p-1.5 z-30 max-h-60 overflow-y-auto space-y-1">
-                      <div @click="dailyQueueAccountFilter = ''; dailyQueueAccountDropdownOpen = false;" class="p-2 rounded-xl text-xs cursor-pointer hover:bg-slate-50 flex items-center space-x-2" :class="!dailyQueueAccountFilter ? 'bg-brand-50 text-brand-700 font-bold' : 'text-slate-600'">
-                        <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
-                        <span>Semua Akun Pengelola</span>
-                      </div>
-                      <template x-for="acc in accounts" :key="'dq-drop-acc-'+acc.account_id">
-                        <div @click="dailyQueueAccountFilter = acc.account_id; dailyQueueAccountDropdownOpen = false;" class="p-2 rounded-xl text-xs cursor-pointer hover:bg-slate-50 flex items-center justify-between transition" :class="dailyQueueAccountFilter === acc.account_id ? 'bg-brand-50 text-brand-700 font-bold' : 'text-slate-700'">
-                          <div class="flex items-center space-x-2 min-w-0">
-                            <img :src="acc.profile_picture_url || 'https://via.placeholder.com/32'" class="w-6 h-6 rounded-full border border-slate-200 shrink-0 object-cover">
-                            <div class="min-w-0">
-                              <span class="block truncate font-bold text-slate-900" x-text="'@' + acc.username"></span>
-                              <span class="block truncate text-[10px] text-slate-400" x-text="acc.name || acc.username"></span>
-                            </div>
-                          </div>
-                          <span class="text-[9px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 shrink-0 font-medium" x-text="acc.category || 'General'"></span>
-                        </div>
-                      </template>
-                    </div>
-                  </div>
-
-                  <!-- 3-Mode Filter Status Posting -->
-                  <select x-model="dailyQueueStatusFilter" class="text-xs py-2 px-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none font-bold text-slate-800">
-                    <option value="unposted_only">Belum Posting Hari Ini</option>
-                    <option value="posted_only">Posting Hari Ini</option>
-                    <option value="all">Semua Data</option>
-                  </select>
-                </div>
-
-                <!-- Tombol Reset Filter Persisten -->
-                <template x-if="dailyQueueCategoryFilter || dailyQueueAccountFilter || dailyQueueSearch || dailyQueueStatusFilter !== 'unposted_only'">
-                  <button type="button" @click="resetDailyQueueFilters()" class="px-3.5 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 border border-rose-200 rounded-xl transition flex items-center justify-center space-x-1.5 shrink-0">
-                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-                    <span>Reset Filter</span>
-                  </button>
-                </template>
-              </div>
-
-              <!-- Baris Status Aktif Filter -->
-              <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-100">
-                <span x-text="'Menampilkan ' + filteredDailyQueueProducts.length + ' produk'"></span>
-                <span class="text-slate-400 font-medium">Filter tersimpan otomatis</span>
-              </div>
-            </div>
-
-            <!-- Grid Kartu Produk Antrean Rotasi -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              <template x-for="prod in filteredDailyQueueProducts" :key="'dq-card-' + prod.product_id">
-                <div class="bg-surface rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-brand-300 hover:shadow-md transition flex flex-col justify-between space-y-4">
-                  <!-- Bagian Atas: Cover, Judul & Info Finansial -->
-                  <div class="space-y-3">
-                    <div class="flex items-start space-x-3.5">
-                      <!-- Cover Gambar (Klik untuk Zoom Lightbox) -->
-                      <div class="relative w-16 h-16 rounded-xl overflow-hidden border border-slate-200 shrink-0 cursor-pointer group bg-slate-100" @click="openFullscreenMedia(prod.cover_url || getFirstProductMediaUrl(prod.product_id) || 'https://via.placeholder.com/150', false, prod.title)">
-                        <img :src="prod.cover_url || getFirstProductMediaUrl(prod.product_id) || 'https://via.placeholder.com/80?text=No+Cover'" class="w-full h-full object-cover group-hover:scale-105 transition duration-200">
-                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
-                          <i data-lucide="zoom-in" class="w-4 h-4"></i>
-                        </div>
-                      </div>
-
-                      <div class="min-w-0 flex-1">
-                        <div class="flex items-center space-x-1.5">
-                          <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100" x-text="prod.category || 'General'"></span>
-                          <span class="text-[10px] font-bold text-emerald-600 px-1.5 py-0.2 bg-emerald-50 rounded" x-text="'Komisi ' + getProductTotalCommissionPct(prod) + '%'"></span>
-                        </div>
-                        <h4 class="font-bold text-xs text-slate-900 mt-1 truncate" :title="prod.title" x-text="prod.title"></h4>
-                        <div class="flex items-center space-x-2 mt-0.5">
-                          <span class="text-xs font-bold text-slate-800" x-text="formatRupiah(prod.price)"></span>
-                          <span class="text-[10px] text-slate-400" x-text="'(' + formatRupiah(getProductTotalCommissionRp(prod)) + ')'"></span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Indikator Riwayat & Frekuensi Posting (Riwayat Terakhir Klikabel Membuka Modal Audit Trail) -->
-                    <div class="p-2.5 bg-slate-50/80 rounded-xl border border-slate-100 space-y-1.5">
-                      <div class="flex items-center justify-between text-xs">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Status Hari Ini:</span>
-                        <template x-if="getProductPostsToday(prod.product_id) === 0">
-                          <span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
-                            <span>0 Post Hari Ini</span>
-                          </span>
-                        </template>
-                        <template x-if="getProductPostsToday(prod.product_id) > 0">
-                          <span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-emerald-600"></i>
-                            <span x-text="getProductPostsToday(prod.product_id) + ' Post Hari Ini'"></span>
-                          </span>
-                        </template>
-                      </div>
-
-                      <!-- Riwayat Terakhir (Klikabel Membuka Modal Audit 10 Postingan Terakhir) -->
-                      <div @click="openProductAuditModal(prod)" class="flex items-center justify-between text-xs pt-1 border-t border-slate-200/50 cursor-pointer group hover:bg-slate-100/70 -mx-1 px-1 py-0.5 rounded-lg transition" title="Klik untuk melihat 10 rekam jejak postingan produk ini">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center space-x-1">
-                          <span>Riwayat Terakhir:</span>
-                          <i data-lucide="history" class="w-3 h-3 text-slate-400 group-hover:text-brand-600 transition"></i>
-                        </span>
-                        <span class="inline-flex items-center space-x-1 text-[11px] font-medium group-hover:underline" :class="getProductLastPostedInfo(prod.product_id).days === -1 ? 'text-rose-600 font-bold' : (getProductLastPostedInfo(prod.product_id).days > 2 ? 'text-amber-700 font-semibold' : 'text-slate-600')">
-                          <i data-lucide="clock" class="w-3 h-3 text-slate-400"></i>
-                          <span x-text="getProductLastPostedInfo(prod.product_id).text"></span>
-                        </span>
-                      </div>
-                    </div>
-
-                    <!-- Armada Akun Pengelola yang Terikat -->
-                    <div class="flex items-center justify-between text-[11px] text-slate-500 px-1">
-                      <span class="flex items-center space-x-1 font-medium">
-                        <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
-                        <span x-text="getAssignedAccountsList(prod).length + ' Akun Terikat'"></span>
-                      </span>
-                      <button type="button" @click="openAssignedAccountsModal(prod)" class="text-[10px] font-bold text-brand-600 hover:underline">
-                        Lihat Akun
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Bagian Bawah: Aksi Utama "Detail" & "Buat Postingan" Ramping -->
-                  <div class="pt-3 border-t border-slate-100 flex items-center space-x-2">
-                    <button type="button" @click="openProductDetail(prod)" class="px-3.5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition flex items-center justify-center space-x-1.5" title="Buka Detail Produk & Galeri">
-                      <i data-lucide="info" class="w-3.5 h-3.5 text-slate-500"></i>
-                      <span>Detail</span>
-                    </button>
-                    <button type="button" @click="startComposerWithProductAndAccount(prod)" class="flex-1 py-2.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center justify-center space-x-1.5 transition">
-                      <i data-lucide="edit-3" class="w-4 h-4"></i>
-                      <span>Buat Postingan</span>
-                    </button>
-                  </div>
-                </div>
-              </template>
-            </div>
-
-            <!-- Tampilan Kosong Saat Semua Produk Sudah Diposting Hari Ini -->
-            <template x-if="filteredDailyQueueProducts.length === 0">
-              <div class="py-16 text-center bg-surface rounded-2xl border border-slate-200 p-8 space-y-3">
-                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
-                  <i data-lucide="check-circle-2" class="w-6 h-6"></i>
-                </div>
-                <h3 class="text-base font-bold text-slate-800">Semua Produk Telah Dijadwalkan Hari Ini!</h3>
-                <p class="text-xs text-slate-500 max-w-md mx-auto">Seluruh produk affiliate yang terikat dengan armada akun sudah memiliki agenda postingan. Anda dapat melihat arsip di menu Katalog Produk.</p>
-                <div class="pt-2">
-                  <button type="button" @click="dailyQueueStatusFilter = 'all'; saveDailyQueueFilters();" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition">
-                    Tampilkan Semua Produk
-                  </button>
-                </div>
-              </div>
-            </template>
-          </div>
-
           <!-- TAB 2: AKUN THREADS -->
           <div x-show="currentTab === 'accounts'" class="space-y-4">
             <!-- Toolbar Sejajar: Pencarian, Filter Niche & Tombol Aksi -->
@@ -2012,544 +1787,6 @@
               <template x-if="filteredViralLibrary.length === 0">
                 <div class="py-12 text-center text-xs text-slate-400">Belum ada referensi ide viral tersimpan.</div>
               </template>
-            </div>
-          </div>
-
-          <!-- TAB BARU: DRAFT MODE ACC (APPROVAL & REVISION WORKFLOW) -->
-          <div x-show="currentTab === 'draft_acc'" class="space-y-4">
-            <!-- Toolbar Filter Status, Pencarian, & Tombol Buat Draf -->
-            <div class="bg-surface p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <!-- Filter Status Chips -->
-              <div class="flex flex-wrap items-center gap-1.5">
-                <button @click="draftAccStatusFilter = 'Pending'" :class="draftAccStatusFilter === 'Pending' ? 'bg-amber-500 text-white font-bold shadow-xs' : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border-slate-200'" class="px-3 py-1.5 rounded-xl text-xs transition border">
-                  <span>Pending ACC</span> (<span x-text="getDraftAccStatusCount('Pending')"></span>)
-                </button>
-                <button @click="draftAccStatusFilter = 'Revision'" :class="draftAccStatusFilter === 'Revision' ? 'bg-amber-600 text-white font-bold shadow-xs' : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border-slate-200'" class="px-3 py-1.5 rounded-xl text-xs transition border">
-                  <span>Revisi</span> (<span x-text="getDraftAccStatusCount('Revision')"></span>)
-                </button>
-                <button @click="draftAccStatusFilter = 'Approved'" :class="draftAccStatusFilter === 'Approved' ? 'bg-emerald-600 text-white font-bold shadow-xs' : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border-slate-200'" class="px-3 py-1.5 rounded-xl text-xs transition border">
-                  <span>Approved</span> (<span x-text="getDraftAccStatusCount('Approved')"></span>)
-                </button>
-                <button @click="draftAccStatusFilter = 'Rejected'" :class="draftAccStatusFilter === 'Rejected' ? 'bg-rose-600 text-white font-bold shadow-xs' : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border-slate-200'" class="px-3 py-1.5 rounded-xl text-xs transition border">
-                  <span>Rejected</span> (<span x-text="getDraftAccStatusCount('Rejected')"></span>)
-                </button>
-              </div>
-
-              <!-- Baris Pencarian & Tombol Aksi -->
-              <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-2 border-t border-slate-100">
-                <div class="relative flex-1 max-w-md">
-                  <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                  <input type="text" x-model="draftAccSearch" placeholder="Cari judul draf, teks hook, atau nama produk..." class="w-full text-xs pl-9 pr-3 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20">
-                </div>
-
-                <button @click="openAddDraftAccModal()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl flex items-center justify-center space-x-1.5 shadow-md shadow-brand-500/20 transition active:scale-95 shrink-0">
-                  <i data-lucide="plus" class="w-4 h-4"></i>
-                  <span>+ Ajukan Draf Konten Baru</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- List Kartu Draf Konten (Expanded View Utas 1 & 2 Terbuka Penuh) -->
-            <div class="space-y-4">
-              <template x-for="draft in filteredDraftAccList" :key="draft.draft_id">
-                <div class="bg-surface rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm hover:border-slate-300 transition space-y-4">
-                  <!-- Header Draf: Status, Judul, Akun Target & Info Terkait -->
-                  <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-slate-100">
-                    <div class="space-y-1.5 min-w-0">
-                      <div class="flex flex-wrap items-center gap-2">
-                        <template x-if="draft.account_id && getAccount(draft.account_id).account_id">
-                          <div class="inline-flex items-center space-x-1.5 px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-full">
-                            <img :src="getAccount(draft.account_id).profile_picture_url || 'https://via.placeholder.com/24'" class="w-4 h-4 rounded-full border border-slate-200 object-cover shrink-0">
-                            <span class="text-xs font-bold text-slate-800" x-text="'@' + getAccount(draft.account_id).username"></span>
-                          </div>
-                        </template>
-                        <template x-if="!draft.account_id || !getAccount(draft.account_id).account_id">
-                          <span class="px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-100 text-slate-400 border border-slate-200 italic">Belum ada akun</span>
-                        </template>
-                        <span :class="getDraftAccStatusBadgeClass(draft.approval_status)" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-flex items-center space-x-1" x-text="draft.approval_status"></span>
-                        <h3 class="text-sm sm:text-base font-bold text-slate-900 truncate" x-text="draft.title || 'Draf Konten Tanpa Judul'"></h3>
-                      </div>
-                      <div class="flex items-center space-x-2 text-[11px] text-slate-400">
-                        <span x-text="'Diajukan ' + formatDate(draft.created_at)"></span>
-                        <span x-show="draft.updated_at && draft.updated_at !== draft.created_at">•</span>
-                        <span x-show="draft.updated_at && draft.updated_at !== draft.created_at" x-text="'Diperbarui ' + formatTimeAgo(draft.updated_at)"></span>
-                      </div>
-                    </div>
-
-                    <!-- Micro-Card Produk & Tombol Referensi Viral Sejajar di Kanan -->
-                    <div class="flex flex-wrap items-center gap-2 shrink-0">
-                      <!-- Tombol Referensi Bank Viral Interaktif -->
-                      <template x-if="draft.viral_id && getViralItem(draft.viral_id).viral_id">
-                        <button type="button" @click="openViralReferenceDetail(draft.viral_id)" class="px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold transition flex items-center space-x-1 shadow-2xs" title="Klik untuk melihat sumber referensi viral">
-                          <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-600"></i>
-                          <span class="truncate max-w-[150px]" x-text="'Acuan: ' + getViralItem(draft.viral_id).title"></span>
-                        </button>
-                      </template>
-
-                      <!-- Micro-Card Produk -->
-                      <template x-if="draft.product_id && getProduct(draft.product_id).product_id">
-                        <div class="p-1.5 pr-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center space-x-2">
-                          <img :src="getProduct(draft.product_id).cover_url || getFirstProductMediaUrl(draft.product_id) || 'https://via.placeholder.com/32'" class="w-7 h-7 rounded-lg object-cover border border-slate-200 shrink-0">
-                          <div class="min-w-0">
-                            <span class="block text-[11px] font-bold text-slate-800 truncate max-w-[160px]" x-text="getProduct(draft.product_id).title"></span>
-                            <span class="text-[9px] text-emerald-600 font-semibold" x-text="formatRupiah(getProduct(draft.product_id).price) + ' • ' + getProduct(draft.product_id).commission_pct + '%'"></span>
-                          </div>
-                          <template x-if="getProduct(draft.product_id).affiliate_link">
-                            <a :href="getProduct(draft.product_id).affiliate_link" target="_blank" @click.stop class="p-1 text-slate-400 hover:text-brand-600 transition" title="Buka Link Spill">
-                              <i data-lucide="external-link" class="w-3 h-3"></i>
-                            </a>
-                          </template>
-                        </div>
-                      </template>
-                    </div>
-                  </div>
-
-                  <!-- Expanded View Seluruh Rantai Utas Langsung Terbuka Penuh -->
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                    <template x-for="(chn, chnIdx) in parseDraftChains(draft.chains_json)" :key="'dch-view-'+chnIdx">
-                      <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/90 space-y-2 flex flex-col justify-between">
-                        <div class="space-y-2">
-                          <div class="flex items-center justify-between text-xs font-bold text-slate-700">
-                            <span class="flex items-center space-x-1.5">
-                              <span class="w-5 h-5 rounded-full bg-brand-100 text-brand-700 text-[10px] flex items-center justify-center font-bold" x-text="chnIdx + 1"></span>
-                              <span x-text="chnIdx === 0 ? 'Utas #1 (Hook Utama)' : 'Utas #' + (chnIdx + 1) + ' (Sambungan / CTA)'"></span>
-                            </span>
-                            <span class="text-[10px] font-mono text-slate-400" x-text="(chn.text_content || chn.content_text || '').length + ' karakter'"></span>
-                          </div>
-                          <p class="text-xs text-slate-800 whitespace-pre-wrap leading-relaxed bg-white p-3 rounded-xl border border-slate-100" x-text="chn.text_content || chn.content_text || 'Belum ada teks'"></p>
-                        </div>
-
-                        <!-- Thumbnail Media Utas Ini -->
-                        <template x-if="(chn.media_urls || []).length > 0">
-                          <div class="pt-2 border-t border-slate-200/60">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Aset Media Terpilih (<span x-text="(chn.media_urls || []).length"></span>):</span>
-                            <div class="flex overflow-x-auto space-x-2 pb-1">
-                              <template x-for="(mUrl, muIdx) in chn.media_urls" :key="'dm-m-'+chnIdx+'-'+muIdx">
-                                <div class="relative w-14 h-14 rounded-xl overflow-hidden border border-slate-200 bg-slate-900 shrink-0">
-                                  <template x-if="isVideoUrl(mUrl)">
-                                    <video :src="mUrl" class="w-full h-full object-cover" muted playsinline></video>
-                                  </template>
-                                  <template x-if="!isVideoUrl(mUrl)">
-                                    <img :src="mUrl" class="w-full h-full object-cover cursor-pointer" @click="openFullscreenMedia(mUrl, false, 'Media Utas #' + (chnIdx + 1))">
-                                  </template>
-                                </div>
-                              </template>
-                            </div>
-                          </div>
-                        </template>
-                      </div>
-                    </template>
-                  </div>
-
-                  <!-- Kolom Catatan Revisi Aktif (Jika status Revision) -->
-                  <template x-if="draft.approval_status === 'Revision' && draft.revision_notes">
-                    <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 space-y-1">
-                      <div class="flex items-center space-x-1.5 font-bold">
-                        <i data-lucide="alert-circle" class="w-4 h-4 text-amber-600"></i>
-                        <span>Catatan Revisi dari Reviewer:</span>
-                      </div>
-                      <p class="text-slate-800 pl-5 leading-relaxed italic" x-text="'“' + draft.revision_notes + '”'"></p>
-                    </div>
-                  </template>
-
-                  <!-- Action Bar Admin (Approval, Revision, Reject, Jadwalkan, & Hapus) -->
-                  <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2.5">
-                    <div class="flex items-center space-x-2">
-                      <!-- Tombol Approve (Tetap di tabel yang sama) -->
-                      <button type="button" @click="submitDraftApprovalAction(draft.draft_id, 'Approved', '')" :disabled="draftActionLoadingId === draft.draft_id" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-2xs disabled:opacity-50">
-                        <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-                        <span>Approved</span>
-                      </button>
-
-                      <!-- Tombol Revision (Membuka popup catatan wajib) -->
-                      <button type="button" @click="openDraftRevisionModal(draft)" :disabled="draftActionLoadingId === draft.draft_id" class="px-3.5 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-2xs disabled:opacity-50">
-                        <i data-lucide="edit-2" class="w-3.5 h-3.5 text-amber-600"></i>
-                        <span>Revision</span>
-                      </button>
-
-                      <!-- Tombol Rejected -->
-                      <button type="button" @click="submitDraftApprovalAction(draft.draft_id, 'Rejected', '')" :disabled="draftActionLoadingId === draft.draft_id" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 disabled:opacity-50">
-                        <i data-lucide="x-circle" class="w-3.5 h-3.5"></i>
-                        <span>Rejected</span>
-                      </button>
-                    </div>
-
-                    <div class="flex items-center space-x-2">
-                      <!-- Jika status Approved: Tim bisa langsung mengirim ke Composer untuk dijadwalkan -->
-                      <template x-if="draft.approval_status === 'Approved'">
-                        <button type="button" @click="loadDraftAccIntoComposer(draft)" class="px-3.5 py-1.5 bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-2xs">
-                          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-                          <span>Jadwalkan ke Composer</span>
-                        </button>
-                      </template>
-
-                      <button type="button" @click="openEditDraftAccModal(draft)" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition" title="Edit Konten Draf">
-                        <i data-lucide="pencil" class="w-4 h-4"></i>
-                      </button>
-
-                      <button type="button" @click="promptDeleteDraftAcc(draft.draft_id)" class="p-2 bg-slate-100 hover:bg-rose-50 text-slate-400 hover:text-rose-600 rounded-xl transition" title="Hapus Draf Ini">
-                        <i data-lucide="trash-2" class="w-4 h-4"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </template>
-
-              <template x-if="filteredDraftAccList.length === 0">
-                <div class="py-16 text-center text-xs text-slate-400 bg-surface rounded-2xl border border-slate-200 space-y-2">
-                  <i data-lucide="clipboard-check" class="w-8 h-8 text-slate-300 mx-auto"></i>
-                  <p class="font-bold text-slate-600">Tidak ada draf konten pada filter ini.</p>
-                  <p class="text-[11px] text-slate-400">Klik "+ Ajukan Draf Konten Baru" untuk membuat draf persetujuan.</p>
-                </div>
-              </template>
-            </div>
-          </div>
-
-          <!-- MODAL: ADD / EDIT DRAFT ACC (DENGAN CUSTOM DROPDOWN & BATCH ACCORDION MEDIA) -->
-          <div x-cloak x-show="draftAccModal.show" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-3 sm:p-4">
-            <div class="bg-surface rounded-2xl max-w-3xl w-full mx-auto shadow-2xl border border-slate-100 overflow-hidden flex flex-col max-h-[90vh]">
-              <!-- Header Modal -->
-              <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
-                <div>
-                  <h3 class="text-base font-bold text-slate-900" x-text="draftAccModal.isEdit ? 'Edit Draf Konten ACC' : 'Ajukan Draf Konten Baru untuk ACC'"></h3>
-                  <p class="text-xs text-slate-500">Pilih produk, acuan viral, dan centang aset media per batch katalog</p>
-                </div>
-                <button @click="draftAccModal.show = false" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg">
-                  <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-              </div>
-
-              <!-- Body Modal (Scrollable & Anti Horizontal Stretched Layout) -->
-              <div class="p-4 sm:p-5 overflow-y-auto overflow-x-hidden space-y-4 text-xs flex-1 bg-slate-50/50 min-w-0 max-w-full">
-                <!-- Pilihan Akun Target & Judul Draf -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 min-w-0">
-                  <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Pilih Akun Threads Target <span class="text-rose-500 font-bold">*Wajib</span></label>
-                    <select x-model="draftAccModal.data.account_id" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none font-medium">
-                      <option value="">-- Pilih Akun Target --</option>
-                      <template x-for="acc in accounts" :key="'dm-acc-'+acc.account_id">
-                        <option :value="acc.account_id" x-text="'@' + acc.username + ' (' + (acc.category || 'General') + ')'"></option>
-                      </template>
-                    </select>
-                  </div>
-                  <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Judul / Topik Draf <span class="text-rose-500 font-bold">*Wajib</span></label>
-                    <input type="text" x-model="draftAccModal.data.title" placeholder="Contoh: Review Stik Keju Pouch 250g - Hook Viral" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20">
-                  </div>
-                </div>
-
-                <!-- Custom Searchable Dropdowns: Produk & Acuan Bank Viral -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 min-w-0">
-                  <!-- Custom Searchable Dropdown Produk -->
-                  <div class="relative" @click.outside="draftAccModal.productDropdownOpen = false">
-                    <label class="block font-semibold text-slate-700 mb-1">Pilih Produk Affiliate Terkait</label>
-                    <button type="button" @click="draftAccModal.productDropdownOpen = !draftAccModal.productDropdownOpen; draftAccModal.viralDropdownOpen = false;" class="w-full text-left text-xs p-2.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 flex items-center justify-between transition focus:outline-none focus:ring-2 focus:ring-brand-500/20">
-                      <div class="flex items-center space-x-2 min-w-0 flex-1">
-                        <template x-if="draftAccModal.data.product_id && getProduct(draftAccModal.data.product_id).product_id">
-                          <div class="flex items-center space-x-2 min-w-0 flex-1">
-                            <img :src="getProduct(draftAccModal.data.product_id).cover_url || getFirstProductMediaUrl(draftAccModal.data.product_id) || 'https://via.placeholder.com/32'" class="w-6 h-6 rounded-md object-cover border border-slate-200 shrink-0">
-                            <div class="min-w-0 flex-1 truncate">
-                              <span class="font-bold text-slate-900 truncate block" x-text="getProduct(draftAccModal.data.product_id).title"></span>
-                            </div>
-                            <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 shrink-0" x-text="getProduct(draftAccModal.data.product_id).commission_pct + '%'"></span>
-                          </div>
-                        </template>
-                        <template x-if="!draftAccModal.data.product_id || !getProduct(draftAccModal.data.product_id).product_id">
-                          <span class="text-slate-400 italic">-- Pilih Produk Affiliate --</span>
-                        </template>
-                      </div>
-                      <div class="flex items-center space-x-1 shrink-0 ml-2">
-                        <template x-if="draftAccModal.data.product_id">
-                          <span @click.stop="selectDraftModalProduct('')" class="p-0.5 text-slate-400 hover:text-rose-600 rounded transition cursor-pointer" title="Lepas Produk">
-                            <i data-lucide="x" class="w-3.5 h-3.5"></i>
-                          </span>
-                        </template>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400"></i>
-                      </div>
-                    </button>
-
-                    <!-- Dropdown Panel Produk -->
-                    <div x-show="draftAccModal.productDropdownOpen" x-cloak class="absolute left-0 right-0 top-full mt-1.5 bg-white rounded-2xl shadow-xl border border-slate-200 p-2 z-40 max-h-64 overflow-hidden flex flex-col space-y-1.5">
-                      <div class="relative shrink-0">
-                        <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2"></i>
-                        <input type="text" x-model="draftAccModal.productSearch" placeholder="Cari nama atau kategori produk..." class="w-full text-xs pl-8 pr-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-brand-500">
-                      </div>
-                      <div class="overflow-y-auto space-y-1 flex-1 pr-0.5">
-                        <div @click="selectDraftModalProduct('')" class="p-2 rounded-xl cursor-pointer hover:bg-slate-50 flex items-center justify-between text-xs" :class="!draftAccModal.data.product_id ? 'bg-brand-50 text-brand-700 font-bold' : 'text-slate-600'">
-                          <span>-- Tanpa Produk --</span>
-                        </div>
-                        <template x-for="p in getFilteredDraftModalProducts()" :key="'dmp-prod-'+p.product_id">
-                          <div @click="selectDraftModalProduct(p.product_id)" class="p-2 rounded-xl cursor-pointer hover:bg-brand-50/60 border border-transparent hover:border-brand-200 flex items-center justify-between gap-2 transition" :class="draftAccModal.data.product_id === p.product_id ? 'bg-brand-50 text-brand-900 border-brand-300 font-bold' : 'text-slate-800'">
-                            <div class="flex items-center space-x-2.5 min-w-0">
-                              <img :src="p.cover_url || getFirstProductMediaUrl(p.product_id) || 'https://via.placeholder.com/32'" class="w-8 h-8 rounded-lg object-cover border border-slate-200 shrink-0">
-                              <div class="min-w-0">
-                                <span class="block truncate text-xs font-bold" x-text="p.title"></span>
-                                <span class="block truncate text-[10px] text-slate-500" x-text="formatRupiah(p.price) + ' • Komisi ' + p.commission_pct + '%'"></span>
-                              </div>
-                            </div>
-                            <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600 shrink-0 font-medium" x-text="p.category || 'General'"></span>
-                          </div>
-                        </template>
-                        <template x-if="getFilteredDraftModalProducts().length === 0">
-                          <div class="py-4 text-center text-xs text-slate-400">Produk tidak ditemukan.</div>
-                        </template>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Custom Searchable Dropdown Acuan Bank Viral -->
-                  <div class="relative" @click.outside="draftAccModal.viralDropdownOpen = false">
-                    <label class="block font-semibold text-slate-700 mb-1">Acuan dari Bank Ide Viral (Opsional)</label>
-                    <button type="button" @click="draftAccModal.viralDropdownOpen = !draftAccModal.viralDropdownOpen; draftAccModal.productDropdownOpen = false;" class="w-full text-left text-xs p-2.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 flex items-center justify-between transition focus:outline-none focus:ring-2 focus:ring-amber-500/20">
-                      <div class="flex items-center space-x-2 min-w-0 flex-1">
-                        <template x-if="draftAccModal.data.viral_id && getViralItem(draftAccModal.data.viral_id).viral_id">
-                          <div class="flex items-center space-x-2 min-w-0 flex-1">
-                            <i data-lucide="flame" class="w-4 h-4 text-amber-500 shrink-0"></i>
-                            <div class="min-w-0 flex-1 truncate">
-                              <span class="font-bold text-slate-900 truncate block" x-text="getViralItem(draftAccModal.data.viral_id).title"></span>
-                            </div>
-                            <template x-if="Number(getViralItem(draftAccModal.data.viral_id).views_count || 0) > 0">
-                              <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 shrink-0" x-text="formatViewsCount(getViralItem(draftAccModal.data.viral_id).views_count) + ' views'"></span>
-                            </template>
-                          </div>
-                        </template>
-                        <template x-if="!draftAccModal.data.viral_id || !getViralItem(draftAccModal.data.viral_id).viral_id">
-                          <span class="text-slate-400 italic">-- Tanpa Acuan Viral (Tulis Bebas) --</span>
-                        </template>
-                      </div>
-                      <div class="flex items-center space-x-1 shrink-0 ml-2">
-                        <template x-if="draftAccModal.data.viral_id">
-                          <span @click.stop="selectDraftModalViral('')" class="p-0.5 text-slate-400 hover:text-rose-600 rounded transition cursor-pointer" title="Lepas Acuan Viral">
-                            <i data-lucide="x" class="w-3.5 h-3.5"></i>
-                          </span>
-                        </template>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400"></i>
-                      </div>
-                    </button>
-
-                    <!-- Dropdown Panel Viral -->
-                    <div x-show="draftAccModal.viralDropdownOpen" x-cloak class="absolute left-0 right-0 top-full mt-1.5 bg-white rounded-2xl shadow-xl border border-slate-200 p-2 z-40 max-h-64 overflow-hidden flex flex-col space-y-1.5">
-                      <div class="relative shrink-0">
-                        <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2"></i>
-                        <input type="text" x-model="draftAccModal.viralSearch" placeholder="Cari judul ide atau hook..." class="w-full text-xs pl-8 pr-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-amber-500">
-                      </div>
-                      <div class="overflow-y-auto space-y-1 flex-1 pr-0.5">
-                        <div @click="selectDraftModalViral('')" class="p-2 rounded-xl cursor-pointer hover:bg-slate-50 flex items-center justify-between text-xs" :class="!draftAccModal.data.viral_id ? 'bg-amber-50 text-amber-900 font-bold' : 'text-slate-600'">
-                          <span>-- Tanpa Acuan Viral (Tulis Bebas) --</span>
-                        </div>
-                        <template x-for="v in getFilteredDraftModalViral()" :key="'dmp-vir-'+v.viral_id">
-                          <div @click="selectDraftModalViral(v.viral_id)" class="p-2 rounded-xl cursor-pointer hover:bg-amber-50/60 border border-transparent hover:border-amber-200 flex items-center justify-between gap-2 transition" :class="draftAccModal.data.viral_id === v.viral_id ? 'bg-amber-50 text-amber-900 border-amber-300 font-bold' : 'text-slate-800'">
-                            <div class="min-w-0 flex-1">
-                              <span class="block truncate text-xs font-bold" x-text="v.title"></span>
-                              <div class="flex items-center space-x-2 mt-0.5 text-[10px] text-slate-400">
-                                <span x-text="'@' + (v.extracted_username || extractUsernameFromUrl(v.source_url) || 'anonim')"></span>
-                                <template x-if="Number(v.views_count || 0) > 0">
-                                  <span>•</span>
-                                </template>
-                                <template x-if="Number(v.views_count || 0) > 0">
-                                  <span class="text-emerald-600 font-semibold" x-text="formatViewsCount(v.views_count) + ' views'"></span>
-                                </template>
-                              </div>
-                            </div>
-                          </div>
-                        </template>
-                        <template x-if="getFilteredDraftModalViral().length === 0">
-                          <div class="py-4 text-center text-xs text-slate-400">Ide viral tidak ditemukan.</div>
-                        </template>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Panel Acuan Bank Viral -->
-                <template x-if="draftAccModal.data.viral_id && getViralItem(draftAccModal.data.viral_id).viral_id">
-                  <div class="p-3 bg-amber-50/80 rounded-2xl border border-amber-200/90 text-xs space-y-2 min-w-0 max-w-full">
-                    <div class="flex items-center justify-between">
-                      <div class="flex items-center space-x-2 min-w-0">
-                        <i data-lucide="flame" class="w-4 h-4 text-amber-600 shrink-0"></i>
-                        <span class="font-bold text-amber-900 truncate" x-text="'Acuan Referensi: ' + getViralItem(draftAccModal.data.viral_id).title"></span>
-                      </div>
-                      <button type="button" @click="openViralReferenceDetail(draftAccModal.data.viral_id)" class="text-[11px] font-bold text-amber-800 hover:underline flex items-center space-x-0.5 shrink-0">
-                        <span>Buka Detail Lengkap</span>
-                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
-                      </button>
-                    </div>
-                    <div class="p-2 bg-white rounded-xl border border-amber-100 text-[11px] text-slate-700 italic space-y-1">
-                      <span class="text-[9px] font-bold text-slate-400 uppercase not-italic block">Pola Hook Referensi:</span>
-                      <p class="line-clamp-2" x-text="'“' + (parseViralChains(getViralItem(draftAccModal.data.viral_id).chains_json)[0] ? parseViralChains(getViralItem(draftAccModal.data.viral_id).chains_json)[0].content_text : '-') + '”'"></p>
-                    </div>
-                  </div>
-                </template>
-
-                <!-- Dynamic Multi-Utas Cards (Teks Bebas Ketik + Pilihan Media Accordion Per Batch) -->
-                <div class="space-y-3 min-w-0 max-w-full">
-                  <template x-for="(chain, cIdx) in draftAccModal.chains" :key="'dchain-'+cIdx">
-                    <div class="p-3.5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-3 min-w-0 max-w-full overflow-hidden">
-                      <!-- Header Box Utas -->
-                      <div class="flex items-center justify-between font-bold text-slate-800">
-                        <div class="flex items-center space-x-2">
-                          <span class="w-5 h-5 rounded-full bg-brand-100 text-brand-700 text-[10px] flex items-center justify-center font-bold" x-text="cIdx + 1"></span>
-                          <span x-text="cIdx === 0 ? 'Utas #1 (Hook Utama)' : 'Utas #' + (cIdx + 1) + ' (Sambungan / CTA)'"></span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                          <span class="text-[10px] font-mono text-slate-400" x-text="(chain.text_content || '').length + ' karakter • ' + (chain.media_urls || []).length + ' media'"></span>
-                          <template x-if="draftAccModal.chains.length > 1">
-                            <button type="button" @click="removeDraftAccChain(cIdx)" class="p-1 text-slate-400 hover:text-rose-600 transition" title="Hapus Utas Ini">
-                              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                            </button>
-                          </template>
-                        </div>
-                      </div>
-
-                      <!-- Textarea Bebas Ketik -->
-                      <textarea x-model="chain.text_content" rows="3" :placeholder="cIdx === 0 ? 'Tulis hook utama yang menarik perhatian audiens...' : 'Tulis ulasan lanjutan atau ajakan klik produk...'" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 leading-relaxed"></textarea>
-
-                      <!-- Slot Media Produk (Accordions Per Batch - No Horizontal Bursting) -->
-                      <div class="pt-2 border-t border-slate-100 space-y-2 min-w-0 max-w-full">
-                        <div class="flex items-center justify-between flex-wrap gap-2">
-                          <span class="text-[10px] uppercase font-bold text-slate-500 flex items-center space-x-1">
-                            <i data-lucide="images" class="w-3 h-3 text-brand-500"></i>
-                            <span>Media Batch / Upload Baru:</span>
-                          </span>
-                          <div class="flex items-center space-x-2">
-                            <span class="text-[10px] text-brand-600 font-semibold" x-text="(chain.media_urls || []).length + ' Terpilih'"></span>
-                            <label class="cursor-pointer inline-flex items-center space-x-1.5 px-2.5 py-1 bg-white hover:bg-brand-50 text-brand-700 text-xs font-bold rounded-lg border border-brand-200 transition shadow-2xs" :class="draftAccModal.uploading ? 'opacity-50 pointer-events-none' : ''">
-                              <i data-lucide="paperclip" class="w-3.5 h-3.5 text-brand-600"></i>
-                              <span>+ Pilih Media</span>
-                              <input type="file" multiple accept="image/*,video/*" @change="handleDraftAccFileSelect(cIdx, $event)" class="hidden" :disabled="draftAccModal.uploading">
-                            </label>
-                          </div>
-                        </div>
-
-                        <!-- Bar Notifikasi Pending Upload Explicit (Draft ACC) -->
-                        <template x-if="chain.raw_files && chain.raw_files.length > 0">
-                          <div class="p-2.5 bg-brand-50/90 rounded-xl border border-brand-300 flex items-center justify-between gap-2 shadow-2xs">
-                            <div class="flex items-center space-x-2 min-w-0">
-                              <i data-lucide="alert-circle" class="w-4 h-4 text-brand-600 shrink-0"></i>
-                              <span class="text-xs font-bold text-brand-900 truncate" x-text="chain.raw_files.length + ' File Terpilih Siap Diunggah'"></span>
-                            </div>
-                            <div class="flex items-center space-x-1.5 shrink-0">
-                              <button type="button" @click="cancelDraftAccRawFiles(cIdx)" :disabled="draftAccModal.uploading" class="px-2 py-1 text-[11px] font-semibold text-slate-500 hover:text-rose-600 transition">
-                                Batal
-                              </button>
-                              <button type="button" @click="uploadDraftAccFiles(cIdx)" :disabled="draftAccModal.uploading" class="px-3 py-1 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-xs font-bold shadow-xs flex items-center space-x-1.5 transition disabled:opacity-50">
-                                <i data-lucide="cloud-upload" class="w-3.5 h-3.5"></i>
-                                <span>Mulai Upload Media</span>
-                              </button>
-                            </div>
-                          </div>
-                        </template>
-
-                        <!-- Jika Produk Dipilih & Punya Batch Media -->
-                        <template x-if="draftAccModal.data.product_id && getDraftProductBatches().length > 0">
-                          <div class="space-y-2">
-                            <template x-for="batch in getDraftProductBatches()" :key="'dch-'+cIdx+'-batch-'+batch.batch_id">
-                              <div class="bg-slate-50 rounded-xl border border-slate-200 overflow-hidden">
-                                <div class="p-2.5 bg-white flex items-center justify-between cursor-pointer border-b border-slate-100 hover:bg-slate-50 transition" @click="toggleDraftAccBatch(batch.batch_id)">
-                                  <div class="flex items-center space-x-2 min-w-0">
-                                    <i :data-lucide="isDraftAccBatchOpen(batch.batch_id) ? 'chevron-down' : 'chevron-right'" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
-                                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-50 text-brand-700 shrink-0" x-text="'Batch #' + (batch.batch_number || 1)"></span>
-                                    <span class="text-xs text-slate-600 truncate" x-text="formatDate(batch.created_at)"></span>
-                                    <span class="text-[10px] text-slate-400 shrink-0" x-text="'(' + getMediaForBatch(batch.batch_id).length + ' media)'"></span>
-                                  </div>
-                                  <button type="button" @click.stop="toggleSelectAllDraftBatchMedia(cIdx, batch.batch_id)" class="px-2 py-0.5 bg-brand-50 hover:bg-brand-100 text-brand-700 text-[10px] font-bold rounded-lg border border-brand-200 transition shrink-0">
-                                    <span x-text="isAllDraftBatchMediaSelected(cIdx, batch.batch_id) ? 'Batalkan Semua' : '+ Pilih Semua'"></span>
-                                  </button>
-                                </div>
-                                <div x-show="isDraftAccBatchOpen(batch.batch_id)" class="p-2.5 grid grid-cols-4 sm:grid-cols-6 gap-2 bg-slate-50 min-w-0 max-w-full">
-                                  <template x-for="m in getMediaForBatch(batch.batch_id)" :key="'dch-'+cIdx+'-m-'+m.media_id">
-                                    <div @click="toggleDraftModalMedia(cIdx, m.cloudinary_url)" class="relative w-full aspect-square rounded-xl overflow-hidden border-2 cursor-pointer transition shadow-2xs" :class="isDraftMediaSelected(cIdx, m.cloudinary_url) ? 'border-brand-600 ring-2 ring-brand-500/20' : 'border-slate-200 bg-white hover:border-slate-300'">
-                                      <img :src="m.thumbnail_url || m.cloudinary_url" class="w-full h-full object-cover">
-                                      <span class="absolute top-0.5 left-0.5 bg-black/60 text-white text-[7px] px-1 rounded font-bold" x-text="m.media_type"></span>
-                                      <template x-if="isDraftMediaSelected(cIdx, m.cloudinary_url)">
-                                        <div class="absolute inset-0 bg-brand-600/30 flex items-center justify-center">
-                                          <div class="w-5 h-5 rounded-full bg-brand-600 text-white text-[10px] font-bold flex items-center justify-center shadow-xs">✓</div>
-                                        </div>
-                                      </template>
-                                    </div>
-                                  </template>
-                                </div>
-                              </div>
-                            </template>
-                          </div>
-                        </template>
-
-                        <!-- Jika Produk Dipilih Tapi Belum Punya Media -->
-                        <template x-if="draftAccModal.data.product_id && getDraftProductBatches().length === 0">
-                          <div class="text-[11px] text-slate-400 italic py-1">Produk ini belum memiliki aset media di katalog.</div>
-                        </template>
-
-                        <!-- Jika Belum Memilih Produk -->
-                        <template x-if="!draftAccModal.data.product_id">
-                          <div class="text-[11px] text-slate-400 italic py-1 flex items-center space-x-1">
-                            <i data-lucide="info" class="w-3 h-3 text-slate-400"></i>
-                            <span>Pilih produk affiliate di atas untuk menampilkan kelompok media batch.</span>
-                          </div>
-                        </template>
-                      </div>
-                    </div>
-                  </template>
-                </div>
-
-                <!-- Tombol Dinamis: + Tambah Utas -->
-                <button type="button" @click="addDraftAccChain()" class="w-full py-2.5 border-2 border-dashed border-slate-200 hover:border-brand-500 hover:bg-brand-50/20 text-slate-600 hover:text-brand-600 rounded-2xl text-xs font-bold flex items-center justify-center space-x-2 transition">
-                  <i data-lucide="plus" class="w-4 h-4"></i>
-                  <span>+ Tambah Utas Sambungan Baru</span>
-                </button>
-
-                <!-- Progress Bar Upload Media Draft ACC -->
-                <div x-show="draftAccModal.uploading" class="p-3 bg-brand-50 rounded-xl border border-brand-200 space-y-1.5">
-                  <div class="flex justify-between text-xs font-semibold text-brand-900">
-                    <span x-text="draftAccModal.progressText"></span>
-                    <span class="font-bold" x-text="draftAccModal.uploadPercent + '%'"></span>
-                  </div>
-                  <div class="w-full h-2 bg-brand-200 rounded-full overflow-hidden">
-                    <div class="h-full bg-gradient-to-r from-brand-600 to-indigo-600 transition-all duration-300 rounded-full" :style="'width: ' + draftAccModal.uploadPercent + '%'"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Footer Modal -->
-              <div class="p-4 border-t border-slate-100 flex items-center justify-end space-x-2 shrink-0 bg-white">
-                <button type="button" @click="draftAccModal.show = false" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition">Batal</button>
-                <button type="button" @click="submitSaveDraftAcc()" :disabled="draftAccModal.loading" class="px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold shadow-sm transition flex items-center space-x-1.5 disabled:opacity-50">
-                  <template x-if="draftAccModal.loading"><div class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></div></template>
-                  <span x-text="draftAccModal.loading ? 'Menyimpan...' : 'Ajukan Draf Konten'"></span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- MODAL: CATATAN REVISI DRAFT (WAJIB ISI CATATAN) -->
-          <div x-cloak x-show="draftRevisionModal.show" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-            <div class="bg-surface rounded-2xl p-5 max-w-md w-full mx-auto shadow-2xl border border-slate-100 space-y-4">
-              <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-                <div class="flex items-center space-x-2">
-                  <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
-                    <i data-lucide="edit-2" class="w-4 h-4"></i>
-                  </div>
-                  <div>
-                    <h3 class="text-sm font-bold text-slate-900">Kirim Catatan Revisi Draf</h3>
-                    <p class="text-[11px] text-slate-500">Jelaskan poin perbaikan yang perlu diubah tim</p>
-                  </div>
-                </div>
-                <button @click="draftRevisionModal.show = false" class="text-slate-400 hover:text-slate-600 p-1">
-                  <i data-lucide="x" class="w-4 h-4"></i>
-                </button>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1">Catatan Revisi <span class="text-rose-500 font-bold">*Wajib Diisi</span></label>
-                <textarea x-model="draftRevisionModal.notes" rows="4" placeholder="Contoh: Hook utas 1 kurang memancing penasaran, tolong ganti dengan perbandingan harga..." class="w-full text-xs p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20 leading-relaxed"></textarea>
-              </div>
-
-              <div class="flex items-center justify-end space-x-2 pt-2 border-t border-slate-100">
-                <button @click="draftRevisionModal.show = false" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl">Batal</button>
-                <button @click="submitDraftRevision()" :disabled="!draftRevisionModal.notes.trim() || draftRevisionModal.loading" class="px-5 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-sm disabled:opacity-40 disabled:cursor-not-allowed">
-                  <template x-if="draftRevisionModal.loading"><div class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></div></template>
-                  <span>Kirim Permintaan Revisi</span>
-                </button>
-              </div>
             </div>
           </div>
 
@@ -3234,10 +2471,6 @@
                 <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
                 <span>3. Umum</span>
               </button>
-              <button @click="settingsSubTab = 'api_keys'" :class="settingsSubTab === 'api_keys' ? 'bg-brand-600 text-white font-bold' : 'bg-surface text-slate-600 hover:bg-slate-100'" class="px-4 py-2 rounded-xl text-xs transition border border-slate-200 flex items-center space-x-1.5">
-                <i data-lucide="key" class="w-3.5 h-3.5"></i>
-                <span>4. API Keys & Webhooks</span>
-              </button>
             </div>
 
             <!-- SUB-TAB 1: OTOMASI & TRIGGERS (MODULAR 2-MODE CRON SYSTEM) -->
@@ -3447,140 +2680,7 @@
               </div>
             </div>
 
-            <!-- SUB-TAB 4: API KEYS & WEBHOOKS (UNIVERSAL REST API GATEWAY) -->
-            <div x-show="settingsSubTab === 'api_keys'" class="space-y-5">
-              <!-- Card 1: Web App Base URL -->
-              <div class="bg-surface rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-                <div class="flex items-center space-x-3 pb-3 border-b border-slate-100">
-                  <div class="p-2.5 bg-brand-50 text-brand-600 rounded-xl"><i data-lucide="globe" class="w-5 h-5"></i></div>
-                  <div>
-                    <h3 class="text-sm font-bold text-slate-900">URL Endpoint Universal API Gateway</h3>
-                    <p class="text-xs text-slate-500">Gunakan URL hasil deployment Web App ini sebagai base endpoint untuk integrasi AI (Hermes / N8N)</p>
-                  </div>
-                </div>
-
-                <div class="space-y-2">
-                  <label class="block text-xs font-semibold text-slate-700">URL Base Web App (Deploy Exec URL)</label>
-                  <div class="flex flex-col sm:flex-row gap-2">
-                    <input type="text" x-model="baseUrl" placeholder="https://script.google.com/macros/s/.../exec" class="flex-1 text-xs p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-mono text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20">
-                    <button type="button" @click="saveWebAppUrl()" :disabled="savingBaseUrl" class="px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-xs shrink-0 disabled:opacity-50">
-                      <i data-lucide="save" class="w-3.5 h-3.5"></i>
-                      <span x-text="savingBaseUrl ? 'Menyimpan...' : 'Simpan URL'"></span>
-                    </button>
-                    <button type="button" @click="copyToClipboard(baseUrl, 'URL Base Web App disalin!')" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1.5 shrink-0">
-                      <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                      <span>Salin URL</span>
-                    </button>
-                  </div>
-                  <p class="text-[11px] text-slate-400">Endpoint ini menerima request GET dan POST langsung dari agen AI Anda dengan otentikasi API Key terenkripsi.</p>
-                </div>
-              </div>
-
-              <!-- Card 2: Dynamic API Key Management -->
-              <div class="bg-surface rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-3">
-                  <div class="flex items-center space-x-3">
-                    <div class="p-2.5 bg-indigo-50 text-indigo-600 rounded-xl"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
-                    <div>
-                      <h3 class="text-sm font-bold text-slate-900">Manajemen Kunci Akses (Dynamic API Keys)</h3>
-                      <p class="text-xs text-slate-500">Kunci akses SaaS berkinerja tinggi dengan cache 6 jam untuk integrasi aman</p>
-                    </div>
-                  </div>
-                  <button type="button" @click="openApiKeyModal()" class="px-4 py-2 bg-gradient-to-r from-brand-600 to-indigo-600 hover:opacity-95 text-white rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-sm shrink-0">
-                    <i data-lucide="plus" class="w-4 h-4"></i>
-                    <span>+ Generate API Key Baru</span>
-                  </button>
-                </div>
-
-                <!-- Tabel API Keys -->
-                <div class="overflow-x-auto">
-                  <table class="w-full text-left border-collapse text-xs">
-                    <thead>
-                      <tr class="bg-slate-50/75 border-b border-slate-200 text-slate-500 uppercase tracking-wider font-semibold">
-                        <th class="py-3 px-3">Nama Kunci</th>
-                        <th class="py-3 px-3">API Key Token</th>
-                        <th class="py-3 px-3">Status</th>
-                        <th class="py-3 px-3">Dibuat Pada</th>
-                        <th class="py-3 px-3">Terakhir Digunakan</th>
-                        <th class="py-3 px-3 text-right">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100">
-                      <template x-for="k in apiKeys" :key="k.key_id">
-                        <tr class="hover:bg-slate-50/50 transition">
-                          <td class="py-3 px-3 font-bold text-slate-900" x-text="k.key_name"></td>
-                          <td class="py-3 px-3 font-mono">
-                            <div class="flex items-center space-x-2">
-                              <span class="text-slate-600" x-text="maskApiKey(k.api_key)"></span>
-                              <button type="button" @click="copyToClipboard(k.api_key, 'API Key ' + k.key_name + ' disalin!')" class="p-1 text-slate-400 hover:text-brand-600 rounded transition" title="Salin Full API Key">
-                                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                              </button>
-                            </div>
-                          </td>
-                          <td class="py-3 px-3">
-                            <span :class="k.status === 'Active' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-rose-50 text-rose-700 border-rose-200'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-flex items-center space-x-1">
-                              <span class="w-1.5 h-1.5 rounded-full" :class="k.status === 'Active' ? 'bg-emerald-500' : 'bg-rose-500'"></span>
-                              <span x-text="k.status"></span>
-                            </span>
-                          </td>
-                          <td class="py-3 px-3 text-slate-500" x-text="formatDate(k.created_at)"></td>
-                          <td class="py-3 px-3 text-slate-500" x-text="k.last_used_at ? formatDate(k.last_used_at) : 'Belum pernah'"></td>
-                          <td class="py-3 px-3 text-right">
-                            <template x-if="k.status === 'Active'">
-                              <button type="button" @click="promptRevokeKey(k.key_id, k.key_name)" class="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg text-xs font-semibold transition">
-                                Cabut Kunci
-                              </button>
-                            </template>
-                            <template x-if="k.status !== 'Active'">
-                              <span class="text-[11px] text-slate-400 italic">Dinonaktifkan</span>
-                            </template>
-                          </td>
-                        </tr>
-                      </template>
-                    </tbody>
-                  </table>
-                </div>
-
-                <template x-if="apiKeys.length === 0">
-                  <div class="py-8 text-center text-xs text-slate-400 bg-slate-50 rounded-xl border border-slate-200">
-                    Belum ada API Key dibuat. Klik tombol "+ Generate API Key Baru" untuk memberikan akses ke Agen AI.
-                  </div>
-                </template>
-              </div>
-
-              <!-- Card 3: Dokumentasi Cepat API untuk AI Agent (Hermes / N8N) -->
-              <div class="bg-surface rounded-2xl border border-slate-200 p-6 shadow-sm space-y-3">
-                <div class="flex items-center space-x-2 text-slate-900 font-bold text-sm">
-                  <i data-lucide="terminal" class="w-4 h-4 text-brand-600"></i>
-                  <span>Panduan Parameter Universal API Gateway</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                    <span class="font-bold text-slate-800 block">1. GET: Tarik Data Universal</span>
-                    <code class="block bg-white p-2 rounded-lg border border-slate-200 text-[11px] text-slate-700 font-mono overflow-x-auto">
-                      ?api_key=KEY&action=read_table&table_name=Draft_Acc
-                    </code>
-                    <span class="font-bold text-slate-800 block pt-1">2. GET: Alokasi Slot Harian</span>
-                    <code class="block bg-white p-2 rounded-lg border border-slate-200 text-[11px] text-slate-700 font-mono overflow-x-auto">
-                      ?api_key=KEY&action=get_daily_targets
-                    </code>
-                  </div>
-
-                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                    <span class="font-bold text-slate-800 block">3. POST: Create, Update, Delete Baris</span>
-                    <code class="block bg-white p-2 rounded-lg border border-slate-200 text-[11px] text-slate-700 font-mono overflow-x-auto">
-                      {"action":"create_row","table_name":"Draft_Acc","data":{...}}
-                    </code>
-                    <span class="font-bold text-slate-800 block pt-1">4. POST: Otomasi Penjadwalan Ulang Gagal</span>
-                    <code class="block bg-white p-2 rounded-lg border border-slate-200 text-[11px] text-slate-700 font-mono overflow-x-auto">
-                      {"action":"reschedule_failed"}
-                    </code>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- SUB-TAB 4: UMUM -->
+            <!-- SUB-TAB 3: UMUM -->
             <div x-show="settingsSubTab === 'general'" class="space-y-5">
               <div class="bg-surface rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
                 <div class="flex items-center space-x-3">
@@ -3664,40 +2764,6 @@
         </button>
       </nav>
     </main>
-
-    <!-- MODAL: GENERATE DYNAMIC API KEY BARU -->
-    <div x-cloak x-show="apiKeyModal.show" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-      <div class="bg-surface rounded-2xl p-6 max-w-md w-full mx-auto shadow-2xl border border-slate-100 space-y-4">
-        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-          <div class="flex items-center space-x-2.5">
-            <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-              <i data-lucide="key" class="w-4 h-4"></i>
-            </div>
-            <div>
-              <h3 class="text-sm font-bold text-slate-900">Generate Dynamic API Key Baru</h3>
-              <p class="text-[11px] text-slate-500">Berikan akses aman ke Agen AI eksternal</p>
-            </div>
-          </div>
-          <button @click="apiKeyModal.show = false" class="text-slate-400 hover:text-slate-600 p-1">
-            <i data-lucide="x" class="w-4 h-4"></i>
-          </button>
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Kunci / Label Agen <span class="text-rose-500 font-bold">*</span></label>
-          <input type="text" x-model="apiKeyModal.name" placeholder="Contoh: Hermes Agent AI - Server 1" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20">
-          <p class="text-[10px] text-slate-400 mt-1">Kunci akan dibuat dengan prefix aman <code>tc_live_</code> dan masa simpan cache 6 jam.</p>
-        </div>
-
-        <div class="flex items-center justify-end space-x-2 pt-2 border-t border-slate-100">
-          <button @click="apiKeyModal.show = false" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition">Batal</button>
-          <button @click="submitGenerateApiKey()" :disabled="apiKeyModal.loading || !apiKeyModal.name.trim()" class="px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-sm disabled:opacity-40">
-            <template x-if="apiKeyModal.loading"><div class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></div></template>
-            <span>Buat Kunci Sekarang</span>
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- MODAL: ADD / EDIT ACCOUNT WITH NICHE & PERSONA -->
     <div x-cloak x-show="accountModal.show" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm">
@@ -5231,14 +4297,6 @@
         productDetailDescExpanded: false,
         assignedAccountsModal: { show: false, product: null },
         syncingPostIds: [],
-
-        // Filter Persisten Antrean Produk Hari Ini
-        dailyQueueCategoryFilter: '',
-        dailyQueueAccountFilter: '',
-        dailyQueueAccountDropdownOpen: false,
-        dailyQueueSearch: '',
-        dailyQueueStatusFilter: 'unposted_only',
-        productAuditModal: { show: false, product: null },
         commentTabFilter: 'all',
         commentAccountFilter: '',
         commentSearch: '',
@@ -5264,41 +4322,6 @@
         viralLibrary: [],
         postAnalytics: [],
         postComments: [],
-        draftAcc: [],
-        draftAccSearch: '',
-        draftAccStatusFilter: 'Pending',
-        draftActionLoadingId: '',
-        draftRevisionModal: { show: false, draftId: '', notes: '', loading: false },
-        draftAccModal: {
-          show: false,
-          isEdit: false,
-          loading: false,
-          uploading: false,
-          uploadPercent: 0,
-          progressText: '',
-          productDropdownOpen: false,
-          viralDropdownOpen: false,
-          productSearch: '',
-          viralSearch: '',
-          openBatchIds: [],
-          data: {
-            draft_id: '',
-            account_id: '',
-            title: '',
-            product_id: '',
-            viral_id: '',
-            approval_status: 'Pending',
-            revision_notes: '',
-            chains: [
-              { sequence_order: 1, text_content: '', media_urls: [] },
-              { sequence_order: 2, text_content: '', media_urls: [] }
-            ]
-          },
-          chains: [
-            { sequence_order: 1, text_content: '', media_urls: [], raw_files: [] },
-            { sequence_order: 2, text_content: '', media_urls: [], raw_files: [] }
-          ]
-        },
         syncingCommentsPostId: '',
         settings: {},
 
@@ -5348,10 +4371,6 @@
         toast: { show: false, message: '', type: 'success' },
         confirmModal: { show: false, title: '', message: '', onConfirm: () => {} },
         accountModal: { show: false, isEdit: false, accountId: '', token: '', category: 'General', account_persona: '', posting_windows: [{ start: '08:00', end: '22:00' }], daily_max_posts: 30, loading: false },
-        apiKeys: [],
-        baseUrl: '',
-        savingBaseUrl: false,
-        apiKeyModal: { show: false, name: '', loading: false },
         productModal: { show: false, isEdit: false, data: { product_id: '', title: '', category: '', price: 0, description: '', affiliate_link: '', dashboard_url: '', commission_pct: 0, shopee_commission_pct: 0, cover_url: '', assigned_account_ids: [] }, loading: false },
         productMediaModal: { show: false, product: null, selectedFiles: [], uploading: false, uploadPercent: 0, progressText: '', showUploadForm: false },
         mediaPickerModal: { show: false, targetChainIndex: 0, selectedMediaIds: [], openBatchIds: [] },
@@ -5380,7 +4399,6 @@
         // Composer Form Model (Default Target Views 300)
         composer: {
           post_id: '',
-          isReviewDraft: false,
           account_id: '',
           account_ids: [],
           product_id: '',
@@ -5431,7 +4449,6 @@
 
         initApp: function() {
           this.restoreActiveTab();
-          this.restoreDailyQueueFilters();
           this.refreshAllData();
           this.fetchTriggerStatus();
           this.restoreComposerDraft();
@@ -5454,11 +4471,6 @@
               } catch (e) {}
             }
           });
-
-          this.$watch('dailyQueueCategoryFilter', function() { self.saveDailyQueueFilters(); });
-          this.$watch('dailyQueueAccountFilter', function() { self.saveDailyQueueFilters(); });
-          this.$watch('dailyQueueSearch', function() { self.saveDailyQueueFilters(); });
-          this.$watch('dailyQueueStatusFilter', function() { self.saveDailyQueueFilters(); });
 
           this.$watch('postsPerPage', function() {
             self.postsPage = 1;
@@ -5638,7 +4650,7 @@
         restoreActiveTab: function() {
           try {
             var savedTab = localStorage.getItem('threadchain_active_tab');
-            var validTabs = ['dashboard', 'all_posts', 'composer', 'draft_acc', 'inbox_comments', 'daily_queue', 'products', 'viral_library', 'accounts', 'settings', 'training_memory', 'prompt_editor'];
+            var validTabs = ['dashboard', 'all_posts', 'composer', 'inbox_comments', 'daily_queue', 'products', 'viral_library', 'accounts', 'settings', 'training_memory', 'prompt_editor'];
             if (savedTab && validTabs.indexOf(savedTab) !== -1) {
               this.currentTab = savedTab;
             }
@@ -5653,9 +4665,6 @@
           this.mobileMenuOpen = false;
           if (tab === 'composer' && (!this.composer.scheduled_at || new Date(this.composer.scheduled_at).getTime() <= Date.now())) {
             this.composer.scheduled_at = this.getFutureDateTimeString(15);
-          }
-          if (tab === 'draft_acc') {
-            this.draftAccStatusFilter = 'Pending';
           }
           this.$nextTick(function() { lucide.createIcons(); });
         },
@@ -5676,9 +4685,6 @@
                 self.viralLibrary = d.viralLibrary || [];
                 self.postAnalytics = d.postAnalytics || [];
                 self.postComments = d.postComments || [];
-                self.draftAcc = d.draftAcc || [];
-                self.apiKeys = d.apiKeys || [];
-                self.baseUrl = d.baseUrl || d.settings.web_app_base_url || '';
                 self.settings = d.settings || {};
               } else {
                 self.showToast(res ? res.message : 'Gagal memuat data', 'error');
@@ -5695,10 +4701,8 @@
         getPageTitle: function() {
           switch (this.currentTab) {
             case 'dashboard': return 'Dashboard Utama';
-            case 'daily_queue': return 'Antrean Produk Belum Diposting Hari Ini';
             case 'all_posts': return 'Kontrol Postingan';
             case 'composer': return 'Composer Utas Threads';
-            case 'draft_acc': return 'Draft Mode ACC (Review & Persetujuan)';
             case 'inbox_comments': return 'Inbox Interaksi Komentar';
             case 'products': return 'Katalog Produk Affiliate';
             case 'viral_library': return 'Bank Ide Konten Viral';
@@ -5711,10 +4715,8 @@
         getPageSubtitle: function() {
           switch (this.currentTab) {
             case 'dashboard': return 'Pantau analitik, postingan hari ini, & rekomendasi produk';
-            case 'daily_queue': return 'Daftar produk prioritas yang perlu dirotasi agar konsisten mendapatkan traffic harian';
             case 'all_posts': return 'Kelola seluruh status rilis, jadwal, & eksekusi instan';
             case 'composer': return 'Susun rantai pesan multi-bubble & sematkan spill link';
-            case 'draft_acc': return 'Pusat peninjauan materi sebelum dijadwalkan oleh tim operator';
             case 'inbox_comments': return 'Tanggapi pertanyaan leads & calon pembeli';
             case 'products': return 'Kelola tautan affiliate, komisi, & aset batch media';
             case 'viral_library': return 'Inspirasi winning post yang siap digunakan';
@@ -5722,58 +4724,6 @@
             case 'settings': return 'Triggers otomatis, Cloudinary, & integrasi AI';
             default: return 'Enterprise Meta Threads Commerce Operations';
           }
-        },
-
-        get dailyProductRecommendations() {
-          var self = this;
-          var today = new Date();
-          var todayStr = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
-          
-          var productPostCountToday = {};
-          for (var i = 0; i < this.posts.length; i++) {
-            var p = this.posts[i];
-            if (p.product_id) {
-              var postDate = '';
-              if (p.scheduled_at) {
-                postDate = String(p.scheduled_at).slice(0, 10);
-              } else if (p.created_at) {
-                postDate = String(p.created_at).slice(0, 10);
-              }
-              if (postDate === todayStr) {
-                productPostCountToday[p.product_id] = (productPostCountToday[p.product_id] || 0) + 1;
-              }
-            }
-          }
-
-          var recommendations = [];
-          for (var j = 0; j < this.products.length; j++) {
-            var prod = this.products[j];
-            var assigned = [];
-            if (Array.isArray(prod.assigned_account_ids)) {
-              assigned = prod.assigned_account_ids;
-            } else if (prod.assigned_account_ids) {
-              assigned = String(prod.assigned_account_ids).split(',').map(function(s) { return s.trim(); }).filter(Boolean);
-            }
-
-            if (assigned.length > 0) {
-              var postCount = productPostCountToday[prod.product_id] || 0;
-              recommendations.push({
-                product: prod,
-                assigned_account_ids: assigned,
-                posts_today: postCount,
-                has_media: self.getProductMediaCount(prod.product_id) > 0
-              });
-            }
-          }
-
-          recommendations.sort(function(a, b) {
-            if (a.posts_today !== b.posts_today) {
-              return a.posts_today - b.posts_today;
-            }
-            return Number(b.product.commission_pct || 0) - Number(a.product.commission_pct || 0);
-          });
-
-          return recommendations;
         },
 
         startComposerWithProductAndAccount: function(prod, accId) {
@@ -5817,212 +4767,10 @@
           this.showToast('Produk "' + prod.title + '" berhasil dimuat (' + accCountText + ').');
         },
 
-        getTodayDateString: function() {
-          var now = new Date();
-          var y = now.getFullYear();
-          var m = ('0' + (now.getMonth() + 1)).slice(-2);
-          var d = ('0' + now.getDate()).slice(-2);
-          return y + '-' + m + '-' + d;
-        },
-
-        getProductPostsToday: function(productId) {
-          var todayStr = this.getTodayDateString();
-          var count = 0;
-          for (var i = 0; i < this.posts.length; i++) {
-            var p = this.posts[i];
-            if (p.product_id === productId) {
-              var pDate = '';
-              if (p.scheduled_at) {
-                pDate = String(p.scheduled_at).slice(0, 10);
-              } else if (p.created_at) {
-                pDate = String(p.created_at).slice(0, 10);
-              }
-              if (pDate === todayStr) {
-                count++;
-              }
-            }
-          }
-          return count;
-        },
-
-        getProductLastPostedInfo: function(productId) {
-          var relatedPosts = [];
-          for (var i = 0; i < this.posts.length; i++) {
-            var p = this.posts[i];
-            if (p.product_id === productId) {
-              relatedPosts.push(p);
-            }
-          }
-          if (relatedPosts.length === 0) {
-            return {
-              text: 'Belum pernah diposting',
-              days: -1,
-              isNever: true
-            };
-          }
-
-          relatedPosts.sort(function(a, b) {
-            var dateA = new Date(a.scheduled_at || a.created_at || 0).getTime();
-            var dateB = new Date(b.scheduled_at || b.created_at || 0).getTime();
-            return dateB - dateA;
-          });
-
-          var latest = relatedPosts[0];
-          var latestTime = new Date(latest.scheduled_at || latest.created_at).getTime();
-          var nowTime = Date.now();
-          var diffMs = nowTime - latestTime;
-
-          if (diffMs < 0) {
-            return {
-              text: 'Terjadwal hari ini',
-              days: 0,
-              isFuture: true
-            };
-          }
-
-          var diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-          if (diffDays === 0) {
-            return {
-              text: 'Diposting hari ini',
-              days: 0,
-              isToday: true
-            };
-          } else if (diffDays === 1) {
-            return {
-              text: 'Terakhir kemarin',
-              days: 1,
-              isRecent: true
-            };
-          } else {
-            return {
-              text: 'Terakhir ' + diffDays + ' hari lalu',
-              days: diffDays,
-              isOld: true
-            };
-          }
-        },
-
-        get unpostedProductsCount() {
-          var self = this;
-          return this.products.filter(function(p) {
-            return self.getProductPostsToday(p.product_id) === 0;
-          }).length;
-        },
-
-        get filteredDailyQueueProducts() {
-          var self = this;
-          var cat = this.dailyQueueCategoryFilter;
-          var acc = this.dailyQueueAccountFilter;
-          var q = (this.dailyQueueSearch || '').toLowerCase().trim();
-          var statusFilter = this.dailyQueueStatusFilter || 'unposted_only';
-
-          var list = this.products.filter(function(p) {
-            var postsToday = self.getProductPostsToday(p.product_id);
-            if (statusFilter === 'unposted_only' && postsToday > 0) {
-              return false;
-            }
-            if (statusFilter === 'posted_only' && postsToday === 0) {
-              return false;
-            }
-
-            if (cat && p.category !== cat) {
-              return false;
-            }
-
-            if (acc) {
-              var assigned = [];
-              if (Array.isArray(p.assigned_account_ids)) {
-                assigned = p.assigned_account_ids;
-              } else if (p.assigned_account_ids) {
-                assigned = String(p.assigned_account_ids).split(',').map(function(s) { return s.trim(); }).filter(Boolean);
-              }
-              if (assigned.indexOf(acc) === -1) {
-                return false;
-              }
-            }
-
-            if (q) {
-              var titleMatch = p.title && p.title.toLowerCase().indexOf(q) !== -1;
-              var descMatch = p.description && p.description.toLowerCase().indexOf(q) !== -1;
-              if (!titleMatch && !descMatch) return false;
-            }
-
-            return true;
-          });
-
-          list.sort(function(a, b) {
-            var postsTodayA = self.getProductPostsToday(a.product_id);
-            var postsTodayB = self.getProductPostsToday(b.product_id);
-            if (postsTodayA !== postsTodayB) {
-              return postsTodayA - postsTodayB;
-            }
-
-            var lastA = self.getProductLastPostedInfo(a.product_id);
-            var lastB = self.getProductLastPostedInfo(b.product_id);
-            var daysA = lastA.days === -1 ? 9999 : lastA.days;
-            var daysB = lastB.days === -1 ? 9999 : lastB.days;
-            if (daysA !== daysB) {
-              return daysB - daysA;
-            }
-
-            return Number(b.commission_pct || 0) - Number(a.commission_pct || 0);
-          });
-
-          return list;
-        },
-
-        restoreDailyQueueFilters: function() {
-          try {
-            var saved = localStorage.getItem('threadchain_daily_queue_filters');
-            if (saved) {
-              var parsed = JSON.parse(saved);
-              if (parsed.category !== undefined) this.dailyQueueCategoryFilter = parsed.category;
-              if (parsed.account !== undefined) this.dailyQueueAccountFilter = parsed.account;
-              if (parsed.search !== undefined) this.dailyQueueSearch = parsed.search;
-              if (parsed.status !== undefined) this.dailyQueueStatusFilter = parsed.status;
-            }
-          } catch (e) {}
-        },
-
-        saveDailyQueueFilters: function() {
-          try {
-            localStorage.setItem('threadchain_daily_queue_filters', JSON.stringify({
-              category: this.dailyQueueCategoryFilter,
-              account: this.dailyQueueAccountFilter,
-              search: this.dailyQueueSearch,
-              status: this.dailyQueueStatusFilter
-            }));
-          } catch (e) {}
-        },
-
-        resetDailyQueueFilters: function() {
-          this.dailyQueueCategoryFilter = '';
-          this.dailyQueueAccountFilter = '';
-          this.dailyQueueSearch = '';
-          this.dailyQueueStatusFilter = 'unposted_only';
-          this.saveDailyQueueFilters();
-          this.showToast('Filter antrean berhasil direset');
-        },
-
         openAssignedAccountsModal: function(prod) {
           this.assignedAccountsModal.product = prod;
           this.assignedAccountsModal.show = true;
           this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        openProductAuditModal: function(prod) {
-          this.productAuditModal.product = prod;
-          this.productAuditModal.show = true;
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        getProductAuditPosts: function(productId) {
-          if (!productId) return [];
-          var related = this.posts.filter(function(p) { return p.product_id === productId; });
-          related.sort(function(a, b) {
-            return new Date(b.scheduled_at || b.created_at || 0) - new Date(a.scheduled_at || a.created_at || 0);
-          });
-          return related.slice(0, 10);
         },
 
         getAssignedAccountsList: function(prod) {
@@ -6847,554 +5595,6 @@
         get paginatedProductsList() {
           var start = (this.productsPage - 1) * this.productsPerPage;
           return this.filteredProductsList.slice(start, start + this.productsPerPage);
-        },
-
-        // --- DRAFT MODE ACC METHODS ---
-        get pendingDraftAccCount() {
-          return this.draftAcc.filter(function(d) {
-            var st = String(d.approval_status || 'Pending').trim().toLowerCase();
-            return st === 'pending' || st === 'revision';
-          }).length;
-        },
-
-        getDraftAccStatusCount: function(status) {
-          return this.draftAcc.filter(function(d) {
-            var st = String(d.approval_status || 'Pending').trim().toLowerCase();
-            return st === String(status).trim().toLowerCase();
-          }).length;
-        },
-
-        get filteredDraftAccList() {
-          var status = this.draftAccStatusFilter || 'Pending';
-          var q = (this.draftAccSearch || '').toLowerCase().trim();
-          var self = this;
-          var list = this.draftAcc.filter(function(d) {
-            var st = String(d.approval_status || 'Pending').trim().toLowerCase();
-            if (st !== String(status).trim().toLowerCase()) {
-              return false;
-            }
-            if (q) {
-              var acc = self.getAccount(d.account_id);
-              var prod = self.getProduct(d.product_id);
-              var chains = self.parseDraftChains(d.chains_json);
-              var c1 = chains[0] ? (chains[0].text_content || '') : '';
-              var c2 = chains[1] ? (chains[1].text_content || '') : '';
-              var matchQ = (d.title && d.title.toLowerCase().indexOf(q) !== -1) ||
-                           (acc.username && acc.username.toLowerCase().indexOf(q) !== -1) ||
-                           (prod.title && prod.title.toLowerCase().indexOf(q) !== -1) ||
-                           c1.toLowerCase().indexOf(q) !== -1 ||
-                           c2.toLowerCase().indexOf(q) !== -1;
-              if (!matchQ) return false;
-            }
-            return true;
-          });
-
-          list.sort(function(a, b) {
-            return new Date(b.created_at || 0) - new Date(a.created_at || 0);
-          });
-
-          return list;
-        },
-
-        parseDraftChains: function(chainsJson) {
-          try {
-            var parsed = JSON.parse(chainsJson || '[]');
-            return Array.isArray(parsed) ? parsed : [];
-          } catch (e) {
-            return [];
-          }
-        },
-
-        getDraftChain: function(draft, index) {
-          var chains = this.parseDraftChains(draft.chains_json);
-          return chains[index] || { sequence_order: index + 1, text_content: '', media_urls: [] };
-        },
-
-        getViralItem: function(viralId) {
-          return this.viralLibrary.find(function(v) { return v.viral_id === viralId; }) || {};
-        },
-
-        openViralReferenceDetail: function(viralId) {
-          var item = this.getViralItem(viralId);
-          if (item && item.viral_id) {
-            this.openViralDetail(item);
-          } else {
-            this.showToast('Data referensi viral tidak ditemukan', 'error');
-          }
-        },
-
-        getDraftAccStatusBadgeClass: function(status) {
-          switch (status) {
-            case 'Approved': return 'bg-emerald-50 text-emerald-700 border-emerald-200';
-            case 'Revision': return 'bg-amber-50 text-amber-700 border-amber-200';
-            case 'Rejected': return 'bg-rose-50 text-rose-700 border-rose-200';
-            default: return 'bg-amber-50 text-amber-800 border-amber-200';
-          }
-        },
-
-        getFilteredDraftModalProducts: function() {
-          var q = (this.draftAccModal.productSearch || '').toLowerCase().trim();
-          if (!q) return this.products;
-          return this.products.filter(function(p) {
-            return (p.title && p.title.toLowerCase().indexOf(q) !== -1) ||
-                   (p.category && p.category.toLowerCase().indexOf(q) !== -1);
-          });
-        },
-
-        selectDraftModalProduct: function(productId) {
-          this.draftAccModal.data.product_id = productId;
-          this.draftAccModal.productDropdownOpen = false;
-          this.draftAccModal.productSearch = '';
-          var batches = this.getBatchesForProduct(productId);
-          this.draftAccModal.openBatchIds = batches.length > 0 ? [batches[0].batch_id] : [];
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        getFilteredDraftModalViral: function() {
-          var q = (this.draftAccModal.viralSearch || '').toLowerCase().trim();
-          if (!q) return this.viralLibrary;
-          return this.viralLibrary.filter(function(v) {
-            return (v.title && v.title.toLowerCase().indexOf(q) !== -1) ||
-                   (v.extracted_username && v.extracted_username.toLowerCase().indexOf(q) !== -1) ||
-                   (v.chains_json && v.chains_json.toLowerCase().indexOf(q) !== -1);
-          });
-        },
-
-        selectDraftModalViral: function(viralId) {
-          this.draftAccModal.data.viral_id = viralId;
-          this.draftAccModal.viralDropdownOpen = false;
-          this.draftAccModal.viralSearch = '';
-          this.applyViralReferenceToDraftModal();
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        getDraftProductBatches: function() {
-          var pId = this.draftAccModal.data.product_id;
-          if (!pId) return [];
-          return this.getBatchesForProduct(pId);
-        },
-
-        toggleDraftAccBatch: function(batchId) {
-          var idx = this.draftAccModal.openBatchIds.indexOf(batchId);
-          if (idx !== -1) {
-            this.draftAccModal.openBatchIds.splice(idx, 1);
-          } else {
-            this.draftAccModal.openBatchIds.push(batchId);
-          }
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        isDraftAccBatchOpen: function(batchId) {
-          return this.draftAccModal.openBatchIds.indexOf(batchId) !== -1;
-        },
-
-        isAllDraftBatchMediaSelected: function(chainIdx, batchId) {
-          var chain = this.draftAccModal.chains[chainIdx];
-          if (!chain || !Array.isArray(chain.media_urls)) return false;
-          var bMedia = this.getMediaForBatch(batchId);
-          if (bMedia.length === 0) return false;
-          return bMedia.every(function(m) {
-            return chain.media_urls.indexOf(m.cloudinary_url) !== -1;
-          });
-        },
-
-        toggleSelectAllDraftBatchMedia: function(chainIdx, batchId) {
-          var chain = this.draftAccModal.chains[chainIdx];
-          if (!chain) return;
-          if (!Array.isArray(chain.media_urls)) chain.media_urls = [];
-          var bMedia = this.getMediaForBatch(batchId);
-          if (bMedia.length === 0) return;
-          var allSelected = this.isAllDraftBatchMediaSelected(chainIdx, batchId);
-          if (allSelected) {
-            var batchUrls = bMedia.map(function(m) { return m.cloudinary_url; });
-            chain.media_urls = chain.media_urls.filter(function(u) {
-              return batchUrls.indexOf(u) === -1;
-            });
-          } else {
-            for (var i = 0; i < bMedia.length; i++) {
-              var u = bMedia[i].cloudinary_url;
-              if (chain.media_urls.indexOf(u) === -1) {
-                chain.media_urls.push(u);
-              }
-            }
-          }
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        isDraftMediaSelected: function(chainIdx, mediaUrl) {
-          var chain = this.draftAccModal.chains[chainIdx];
-          if (!chain || !Array.isArray(chain.media_urls)) return false;
-          return chain.media_urls.indexOf(mediaUrl) !== -1;
-        },
-
-        toggleDraftModalMedia: function(chainIdx, mediaUrl) {
-          var chain = this.draftAccModal.chains[chainIdx];
-          if (!chain) return;
-          if (!Array.isArray(chain.media_urls)) chain.media_urls = [];
-          var idx = chain.media_urls.indexOf(mediaUrl);
-          if (idx !== -1) {
-            chain.media_urls.splice(idx, 1);
-          } else {
-            chain.media_urls.push(mediaUrl);
-          }
-        },
-
-        applyViralReferenceToDraftModal: function() {
-          var vId = this.draftAccModal.data.viral_id;
-          if (!vId) return;
-          var vItem = this.getViralItem(vId);
-          if (vItem) {
-            if (!this.draftAccModal.data.title) {
-              this.draftAccModal.data.title = 'Draf ACC: ' + vItem.title;
-            }
-            this.showToast('Acuan ide viral terpilih sebagai referensi bacaan tim.');
-          }
-        },
-
-        addDraftAccChain: function() {
-          this.draftAccModal.chains.push({
-            sequence_order: this.draftAccModal.chains.length + 1,
-            text_content: '',
-            media_urls: []
-          });
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        removeDraftAccChain: function(idx) {
-          if (this.draftAccModal.chains.length <= 1) return;
-          this.draftAccModal.chains.splice(idx, 1);
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        openAddDraftAccModal: function() {
-          this.draftAccModal.isEdit = false;
-          this.draftAccModal.loading = false;
-          this.draftAccModal.uploading = false;
-          this.draftAccModal.uploadPercent = 0;
-          this.draftAccModal.progressText = '';
-          this.draftAccModal.productDropdownOpen = false;
-          this.draftAccModal.viralDropdownOpen = false;
-          this.draftAccModal.productSearch = '';
-          this.draftAccModal.viralSearch = '';
-          this.draftAccModal.openBatchIds = [];
-          this.draftAccModal.data = {
-            draft_id: '',
-            account_id: this.accounts.length > 0 ? this.accounts[0].account_id : '',
-            title: '',
-            product_id: '',
-            viral_id: '',
-            approval_status: 'Pending',
-            revision_notes: ''
-          };
-          this.draftAccModal.chains = [
-            { sequence_order: 1, text_content: '', media_urls: [], raw_files: [] },
-            { sequence_order: 2, text_content: '', media_urls: [], raw_files: [] }
-          ];
-          this.draftAccModal.show = true;
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        openEditDraftAccModal: function(draft) {
-          this.draftAccModal.isEdit = true;
-          this.draftAccModal.loading = false;
-          this.draftAccModal.uploading = false;
-          this.draftAccModal.uploadPercent = 0;
-          this.draftAccModal.progressText = '';
-          this.draftAccModal.productDropdownOpen = false;
-          this.draftAccModal.viralDropdownOpen = false;
-          this.draftAccModal.productSearch = '';
-          this.draftAccModal.viralSearch = '';
-          var batches = draft.product_id ? this.getBatchesForProduct(draft.product_id) : [];
-          this.draftAccModal.openBatchIds = batches.length > 0 ? [batches[0].batch_id] : [];
-          this.draftAccModal.data = {
-            draft_id: draft.draft_id,
-            account_id: draft.account_id || '',
-            title: draft.title || '',
-            product_id: draft.product_id || '',
-            viral_id: draft.viral_id || '',
-            approval_status: draft.approval_status || 'Pending',
-            revision_notes: draft.revision_notes || ''
-          };
-          var existingChains = this.parseDraftChains(draft.chains_json);
-          this.draftAccModal.chains = existingChains.length > 0 ? existingChains.map(function(c, i) {
-            return {
-              sequence_order: i + 1,
-              text_content: c.text_content || c.content_text || '',
-              media_urls: c.media_urls || [],
-              raw_files: []
-            };
-          }) : [
-            { sequence_order: 1, text_content: '', media_urls: [], raw_files: [] },
-            { sequence_order: 2, text_content: '', media_urls: [], raw_files: [] }
-          ];
-          this.draftAccModal.show = true;
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        handleDraftAccFileSelect: function(chainIdx, event) {
-          var files = Array.from(event.target.files || []);
-          if (!files || files.length === 0) return;
-          var chain = this.draftAccModal.chains[chainIdx];
-          if (!chain.raw_files) chain.raw_files = [];
-          chain.raw_files = chain.raw_files.concat(files);
-          event.target.value = '';
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        cancelDraftAccRawFiles: function(chainIdx) {
-          var chain = this.draftAccModal.chains[chainIdx];
-          if (chain) chain.raw_files = [];
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        uploadDraftAccFiles: function(chainIdx) {
-          var chain = this.draftAccModal.chains[chainIdx];
-          if (!chain || !chain.raw_files || chain.raw_files.length === 0) {
-            this.showToast('Pilih file media terlebih dahulu', 'error');
-            return;
-          }
-
-          var cloudName = this.settings.cloudinary_cloud_name;
-          var uploadPreset = this.settings.cloudinary_upload_preset;
-
-          if (!cloudName || !uploadPreset) {
-            this.showToast('Konfigurasikan Cloud Name dan Upload Preset di menu Pengaturan!', 'error');
-            return;
-          }
-
-          var files = [].concat(chain.raw_files);
-          if (!chain.media_urls) chain.media_urls = [];
-
-          this.draftAccModal.uploading = true;
-          this.draftAccModal.uploadPercent = 0;
-          this.draftAccModal.progressText = 'Mempersiapkan pengunggahan ' + files.length + ' media...';
-
-          var self = this;
-          var total = files.length;
-          var done = 0;
-          var startTime = Date.now();
-          var batchDateStr = this.getBatchDateString();
-          var batchRandStr = Math.random().toString(36).substring(2, 6);
-
-          function uploadNext(index) {
-            if (index >= total) {
-              chain.raw_files = [];
-              self.draftAccModal.uploading = false;
-              self.draftAccModal.uploadPercent = 100;
-              self.draftAccModal.progressText = '';
-              self.showToast('Sukses mengunggah ' + total + ' media ke Cloudinary!');
-              self.$nextTick(function() { lucide.createIcons(); });
-              return;
-            }
-
-            var currentPct = Math.round((done / total) * 100);
-            self.draftAccModal.uploadPercent = currentPct;
-            var elapsedSec = (Date.now() - startTime) / 1000;
-            var etaStr = '';
-            if (done > 0) {
-              var avgSec = elapsedSec / done;
-              var etaSec = Math.round(avgSec * (total - done));
-              etaStr = ' • Sisa waktu: ~' + etaSec + ' dtk';
-            }
-            self.draftAccModal.progressText = 'Mengunggah media ' + (index + 1) + ' dari ' + total + ' (' + currentPct + '%)' + etaStr;
-
-            var customPublicId = 'media_' + batchDateStr + '_' + batchRandStr + '_' + (index + 1);
-            var formData = new FormData();
-            formData.append('file', files[index]);
-            formData.append('upload_preset', uploadPreset);
-            formData.append('public_id', customPublicId);
-
-            fetch('https://api.cloudinary.com/v1_1/' + cloudName + '/auto/upload', {
-              method: 'POST',
-              body: formData
-            })
-            .then(function(res) { return res.json(); })
-            .then(function(data) {
-              if (data.secure_url) {
-                chain.media_urls.push(data.secure_url);
-                done++;
-                self.draftAccModal.uploadPercent = Math.round((done / total) * 100);
-                uploadNext(index + 1);
-              } else {
-                throw new Error(data.error ? data.error.message : 'Upload gagal');
-              }
-            })
-            .catch(function(err) {
-              self.draftAccModal.uploading = false;
-              self.draftAccModal.uploadPercent = 0;
-              self.showToast('Cloudinary upload error: ' + err.message, 'error');
-            });
-          }
-
-          uploadNext(0);
-        },
-
-        submitSaveDraftAcc: function() {
-          var hasPendingDraftFiles = (this.draftAccModal.chains || []).some(function(c) {
-            return c.raw_files && c.raw_files.length > 0;
-          });
-          if (hasPendingDraftFiles) {
-            this.showToast('Ada file media yang belum di-upload. Silakan klik Mulai Upload terlebih dahulu!', 'error');
-            return;
-          }
-
-          if (this.draftAccModal.uploading) {
-            this.showToast('Harap tunggu proses upload media selesai terlebih dahulu', 'error');
-            return;
-          }
-
-          if (!this.draftAccModal.data.account_id) {
-            this.showToast('Pilih akun Threads target terlebih dahulu', 'error');
-            return;
-          }
-          if (!this.draftAccModal.data.title.trim()) {
-            this.showToast('Judul draf wajib diisi', 'error');
-            return;
-          }
-          if (this.draftAccModal.chains.length === 0 || !this.draftAccModal.chains[0].text_content.trim()) {
-            this.showToast('Teks Utas #1 tidak boleh kosong', 'error');
-            return;
-          }
-
-          this.draftAccModal.loading = true;
-          var self = this;
-          var cleanChains = this.draftAccModal.chains.map(function(c, idx) {
-            return {
-              sequence_order: idx + 1,
-              text_content: c.text_content || '',
-              media_urls: c.media_urls || []
-            };
-          });
-
-          var payload = {
-            draft_id: this.draftAccModal.data.draft_id,
-            account_id: this.draftAccModal.data.account_id,
-            title: this.draftAccModal.data.title,
-            product_id: this.draftAccModal.data.product_id,
-            viral_id: this.draftAccModal.data.viral_id,
-            approval_status: this.draftAccModal.data.approval_status || 'Pending',
-            revision_notes: this.draftAccModal.data.revision_notes || '',
-            chains: cleanChains
-          };
-
-          google.script.run
-            .withSuccessHandler(function(res) {
-              self.draftAccModal.loading = false;
-              if (res && res.ok) {
-                self.showToast(res.message);
-                self.draftAccModal.show = false;
-                self.refreshAllData();
-              } else {
-                self.showToast(res ? res.message : 'Gagal menyimpan draf', 'error');
-              }
-            })
-            .withFailureHandler(function(err) {
-              self.draftAccModal.loading = false;
-              self.showToast('Error: ' + err.message, 'error');
-            })
-            .saveDraftAcc(payload);
-        },
-
-        submitDraftApprovalAction: function(draftId, status, notes) {
-          this.draftActionLoadingId = draftId;
-          var self = this;
-          google.script.run
-            .withSuccessHandler(function(res) {
-              self.draftActionLoadingId = '';
-              if (res && res.ok) {
-                self.showToast(res.message);
-                self.refreshAllData();
-              } else {
-                self.showToast(res ? res.message : 'Gagal memperbarui status draf', 'error');
-              }
-            })
-            .withFailureHandler(function(err) {
-              self.draftActionLoadingId = '';
-              self.showToast('Error: ' + err.message, 'error');
-            })
-            .updateDraftApprovalStatus(draftId, status, notes || '');
-        },
-
-        openDraftRevisionModal: function(draft) {
-          this.draftRevisionModal.draftId = draft.draft_id;
-          this.draftRevisionModal.notes = draft.revision_notes || '';
-          this.draftRevisionModal.loading = false;
-          this.draftRevisionModal.show = true;
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        submitDraftRevision: function() {
-          var notes = (this.draftRevisionModal.notes || '').trim();
-          if (!notes) {
-            this.showToast('Catatan revisi wajib diisi!', 'error');
-            return;
-          }
-          this.draftRevisionModal.loading = true;
-          var self = this;
-          var draftId = this.draftRevisionModal.draftId;
-
-          google.script.run
-            .withSuccessHandler(function(res) {
-              self.draftRevisionModal.loading = false;
-              if (res && res.ok) {
-                self.showToast(res.message);
-                self.draftRevisionModal.show = false;
-                self.refreshAllData();
-              } else {
-                self.showToast(res ? res.message : 'Gagal mengajukan revisi', 'error');
-              }
-            })
-            .withFailureHandler(function(err) {
-              self.draftRevisionModal.loading = false;
-              self.showToast('Error: ' + err.message, 'error');
-            })
-            .updateDraftApprovalStatus(draftId, 'Revision', notes);
-        },
-
-        promptDeleteDraftAcc: function(draftId) {
-          var self = this;
-          this.confirmModal = {
-            show: true,
-            title: 'Hapus Draf Konten ACC?',
-            message: 'Draf ini akan dihapus permanen dari sistem review.',
-            onConfirm: function() {
-              google.script.run
-                .withSuccessHandler(function(res) {
-                  if (res && res.ok) {
-                    self.showToast(res.message);
-                    self.refreshAllData();
-                  } else {
-                    self.showToast(res ? res.message : 'Gagal menghapus draf', 'error');
-                  }
-                })
-                .deleteDraftAcc(draftId);
-            }
-          };
-        },
-
-        loadDraftAccIntoComposer: function(draft) {
-          this.resetComposer();
-          var chains = this.parseDraftChains(draft.chains_json);
-          this.composer.draft_id = draft.draft_id || '';
-          this.composer.chain_group_id = draft.draft_id || '';
-          this.composer.product_id = draft.product_id || '';
-          if (draft.account_id) {
-            this.composer.account_id = draft.account_id;
-            this.composer.account_ids = [draft.account_id];
-          }
-
-          if (chains.length > 0) {
-            this.composer.chains = chains.map(function(c) {
-              return {
-                content_text: c.text_content || '',
-                product_ids: draft.product_id ? [draft.product_id] : [],
-                media_ids: c.media_urls || []
-              };
-            });
-          }
-
-          this.switchTab('composer');
-          this.showToast('Draf yang telah disetujui dimuat ke Composer. Silakan pilih akun dan waktu peluncuran!');
         },
 
         isAccountActive: function(acc) {
@@ -9183,8 +7383,7 @@
           var self = this;
           var postPayload = {
             post_id: this.composer.post_id || '',
-            chain_group_id: this.composer.chain_group_id || this.composer.draft_id || '',
-            draft_id: this.composer.draft_id || '',
+            chain_group_id: this.composer.chain_group_id || '',
             account_id: targetAccs[0],
             account_ids: targetAccs,
             product_id: primaryProduct,
@@ -9238,8 +7437,7 @@
           var self = this;
           var postPayload = {
             post_id: this.composer.post_id || '',
-            chain_group_id: this.composer.chain_group_id || this.composer.draft_id || '',
-            draft_id: this.composer.draft_id || '',
+            chain_group_id: this.composer.chain_group_id || '',
             account_id: targetAccs[0],
             account_ids: targetAccs,
             product_id: primaryProduct,
@@ -9367,7 +7565,6 @@
           this.clearComposerDraft();
           this.composer.post_id = '';
           this.composer.chain_group_id = '';
-          this.composer.draft_id = '';
           this.composer.account_id = '';
           this.composer.account_ids = [];
           this.composer.product_id = '';
@@ -9520,21 +7717,6 @@
             .updateTriggerConfig(triggerType, state.interval, enable);
         },
 
-        // --- API KEY & WEBHOOK METHODS ---
-        openApiKeyModal: function() {
-          this.apiKeyModal.name = '';
-          this.apiKeyModal.loading = false;
-          this.apiKeyModal.show = true;
-          this.$nextTick(function() { lucide.createIcons(); });
-        },
-
-        maskApiKey: function(key) {
-          if (!key) return '-';
-          var s = String(key);
-          if (s.length <= 12) return s;
-          return s.slice(0, 10) + '••••••••' + s.slice(-4);
-        },
-
         copyToClipboard: function(text, successMsg) {
           if (!text) {
             this.showToast('Teks kosong untuk disalin', 'error');
@@ -9567,77 +7749,6 @@
             this.showToast('Gagal menyalin teks', 'error');
           }
           document.body.removeChild(textArea);
-        },
-
-        saveWebAppUrl: function() {
-          var url = (this.baseUrl || '').trim();
-          if (!url) {
-            this.showToast('URL Base Web App tidak boleh kosong', 'error');
-            return;
-          }
-          this.savingBaseUrl = true;
-          var self = this;
-          google.script.run
-            .withSuccessHandler(function(res) {
-              self.savingBaseUrl = false;
-              if (res && res.ok) {
-                self.showToast('URL Base Web App berhasil disimpan!');
-              } else {
-                self.showToast(res ? res.message : 'Gagal menyimpan URL', 'error');
-              }
-            })
-            .withFailureHandler(function(err) {
-              self.savingBaseUrl = false;
-              self.showToast('Error: ' + err.message, 'error');
-            })
-            .saveBaseUrl(url);
-        },
-
-        submitGenerateApiKey: function() {
-          var name = (this.apiKeyModal.name || '').trim();
-          if (!name) {
-            this.showToast('Nama kunci / label agen wajib diisi', 'error');
-            return;
-          }
-          this.apiKeyModal.loading = true;
-          var self = this;
-          google.script.run
-            .withSuccessHandler(function(res) {
-              self.apiKeyModal.loading = false;
-              if (res && res.ok) {
-                self.showToast(res.message);
-                self.apiKeyModal.show = false;
-                self.refreshAllData();
-              } else {
-                self.showToast(res ? res.message : 'Gagal membuat API key', 'error');
-              }
-            })
-            .withFailureHandler(function(err) {
-              self.apiKeyModal.loading = false;
-              self.showToast('Error: ' + err.message, 'error');
-            })
-            .generateApiKey(name);
-        },
-
-        promptRevokeKey: function(keyId, keyName) {
-          var self = this;
-          this.confirmModal = {
-            show: true,
-            title: 'Cabut Akses Kunci?',
-            message: 'API Key "' + keyName + '" akan dinonaktifkan secara permanen. Agen AI yang menggunakan kunci ini akan ditolak.',
-            onConfirm: function() {
-              google.script.run
-                .withSuccessHandler(function(res) {
-                  if (res && res.ok) {
-                    self.showToast(res.message);
-                    self.refreshAllData();
-                  } else {
-                    self.showToast(res ? res.message : 'Gagal mencabut kunci', 'error');
-                  }
-                })
-                .revokeApiKey(keyId);
-            }
-          };
         },
 
         // --- DIAGNOSTIK & HEALTH CHECKS ---
