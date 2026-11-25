@@ -412,38 +412,6 @@ function getAllPostsAsJson() {
 }
 
 /**
- * Helper: Mencari lokasi spesifik baris postingan di spreadsheet
- */
-function findPostRowLocation(ss, postId) {
-  var targetSheets = ['Queue_Posts', 'Published_Posts', 'Posts'];
-  for (var s = 0; s < targetSheets.length; s++) {
-    var sheet = ss.getSheetByName(targetSheets[s]);
-    if (!sheet) continue;
-    var values = sheet.getDataRange().getValues();
-    if (values.length <= 1) continue;
-    var headers = values[0];
-    var pIdCol = headers.indexOf('post_id');
-    var gIdCol = headers.indexOf('chain_group_id');
-    if (pIdCol === -1) pIdCol = 0;
-
-    for (var r = 1; r < values.length; r++) {
-      var rowPId = String(values[r][pIdCol]);
-      var rowGId = gIdCol >= 0 ? String(values[r][gIdCol]) : '';
-      if (rowPId === String(postId) || (rowGId && rowGId === String(postId))) {
-        return {
-          sheet: sheet,
-          sheetName: targetSheets[s],
-          rowIndex: r + 1,
-          headers: headers,
-          rowValues: values[r]
-        };
-      }
-    }
-  }
-  return null;
-}
-
-/**
  * Read Initial State for Frontend
  */
 /**
@@ -3791,10 +3759,6 @@ function processPostQueue() {
   return processPublishingQueue();
 }
 
-function publishContainer(metaUserId, creationId, token) {
-  return publishMetaContainer(metaUserId, creationId, token);
-}
-
 function createMediaSnapshot(rawMediaList, mediaRows) {
   if (!Array.isArray(rawMediaList)) return [];
   var snapshots = [];
@@ -3844,43 +3808,6 @@ function createMediaSnapshot(rawMediaList, mediaRows) {
     }
   }
   return snapshots;
-}
-
-function findMediaById(mediaId, mediaRows) {
-  if (!mediaId) return null;
-  var idStr = typeof mediaId === 'object' && mediaId !== null ? (mediaId.media_id || mediaId.url || mediaId.cloudinary_url || '') : String(mediaId).trim();
-  if (!idStr) return null;
-
-  if (/^https?:\/\//i.test(idStr)) {
-    var isVideo = /\.(mp4|mov|webm)$/i.test(idStr) || (idStr.indexOf('/video/') !== -1);
-    return {
-      media_type: isVideo ? 'VIDEO' : 'IMAGE',
-      cloudinary_url: idStr
-    };
-  }
-
-  if (mediaRows && mediaRows.length > 1) {
-    var headers = mediaRows[0];
-    var idCol = headers.indexOf('media_id');
-    var typeCol = headers.indexOf('media_type');
-    var urlCol = headers.indexOf('cloudinary_url');
-    if (idCol === -1) idCol = 0;
-    if (typeCol === -1) typeCol = 4;
-    if (urlCol === -1) urlCol = 5;
-
-    for (var i = 1; i < mediaRows.length; i++) {
-      if (String(mediaRows[i][idCol]).trim() === idStr) {
-        var rawUrl = String(mediaRows[i][urlCol] || '').trim();
-        var rawType = String(mediaRows[i][typeCol] || '').toUpperCase();
-        var isVid = rawType === 'VIDEO' || /\.(mp4|mov|webm)$/i.test(rawUrl);
-        return {
-          media_type: isVid ? 'VIDEO' : 'IMAGE',
-          cloudinary_url: rawUrl
-        };
-      }
-    }
-  }
-  return null;
 }
 
 /**
